@@ -1,5 +1,9 @@
 # ReSwiftConsumer
 
+
+NOW Developing.....
+
+
 [![CI Status](http://img.shields.io/travis/brownsoo/ReSwiftConsumer.svg?style=flat)](https://travis-ci.org/brownsoo/ReSwiftConsumer)
 [![Version](https://img.shields.io/cocoapods/v/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
 [![License](https://img.shields.io/cocoapods/l/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
@@ -22,7 +26,7 @@ pod 'ReSwiftConsumer'
 
 ## Author
 
-brownsoo, hyonsoo.han@tlx.co.kr
+brownsoo, hansune@me.com
 
 ## License
 
