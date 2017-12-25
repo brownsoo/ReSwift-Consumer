@@ -24,7 +24,7 @@ Now deveoping
   s.homepage         = 'https://github.com/brownsoo/ReSwiftConsumer'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'brownsoo' => 'hyonsoo.han@tlx.co.kr' }
+  s.author           = { 'brownsoo' => 'hansune@me.com' }
   s.source           = { :git => 'https://github.com/brownsoo/ReSwiftConsumer.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

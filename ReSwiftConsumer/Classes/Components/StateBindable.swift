@@ -1,0 +1,16 @@
+//
+//  StateBindable.swift
+//  ReSwiftConsumer
+//
+//  Created by hyonsoo han on 2017. 10. 18..
+//  Copyright © 2017년 Hansoo Labs. All rights reserved.
+//
+
+import Foundation
+
+public protocol StateBindable {
+    func bindState()
+    func unbindState()
+}
+
+
