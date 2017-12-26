@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ReSwiftConsumer'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'With ReSwiftConsumer you can consume segmented property changes of state.'
 
 # This description is used to generate tags and improve search results.
@@ -23,11 +23,11 @@ ReSwiftConsumer를 사용해서 ReSwift의 State 중에서 자신이 원하는 �
 ViewController 단에서 사용할 수 있는 콤포넌트를 포함하고 있습니다.
                        DESC
 
-  s.homepage         = 'https://github.com/brownsoo/ReSwiftConsumer'
+  s.homepage         = 'https://github.com/brownsoo/ReSwift-Consumer'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'brownsoo' => 'hansune@me.com' }
-  s.source           = { :git => 'https://github.com/brownsoo/ReSwiftConsumer.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/brownsoo/ReSwift-Consumer.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.3'
