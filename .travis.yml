@@ -35,22 +35,22 @@ matrix:
 #- gem install cocoapods # Since Travis is not always on latest version
 #- pod install --project-directory=Example
 
-# script:
-#   - set -o pipefail
-#   - xcodebuild -version
-#   - xcodebuild -showsdks
-#   - xcodebuild 
-#     -workspace Example/ReSwiftConsumer.xcworkspace 
-#     -scheme "$FRAMEWORK_NAME-$SCHEME"
-#     -sdk "$SDK"
-#     -destination "$DESTINATION"
-#     -configuration Debug
+script:
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
+  - xcodebuild 
+    -workspace Example/ReSwiftConsumer.xcworkspace 
+    -scheme "$FRAMEWORK_NAME-$SCHEME"
+    -sdk "$SDK"
+    -destination "$DESTINATION"
+    -configuration Debug
 
-#     ONLY_ACTIVE_ARCH=YES
-#     GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
-#     GCC_GENERATE_TEST_COVERAGE_FILES=YES
-#     SWIFT_VERSION=$SWIFT_VERSION
-#     test
+    ONLY_ACTIVE_ARCH=YES
+    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
+    GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    SWIFT_VERSION=$SWIFT_VERSION
+    test
 
 #   after_success:
 #     - bash <(curl -s https://codecov.io/bash) -J ReSwiftConsumer
@@ -60,11 +60,11 @@ matrix:
 #       .scripts/update-gh-pages
 
 
-script:
-- set -o pipefail 
-- xcodebuild -version
-- xcodebuild -showsdks
-- xcodebuild test -enableCodeCoverage YES -workspace Example/ReSwiftConsumer.xcworkspace -scheme ReSwiftConsumer-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+# script:
+# - set -o pipefail 
+# - xcodebuild -version
+# - xcodebuild -showsdks
+# - xcodebuild test -enableCodeCoverage YES -workspace Example/ReSwiftConsumer.xcworkspace -scheme ReSwiftConsumer-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+# - pod lib lint
 
 
