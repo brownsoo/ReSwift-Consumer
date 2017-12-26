@@ -12,7 +12,7 @@ ViewController 단에서 바로 사용할 수 있는 다음과 같은 콤포넌�
 * StateSharedViewController : 뷰 컨트롤러 안에 다른 뷰 컨트롤러를 포함시켜 화면을 구성할 경우, 부모 뷰컨트롤러와 State와 Store를 공유하기 위해 제공합니다.
 
 
-[![CI Status](http://img.shields.io/travis/brownsoo/ReSwiftConsumer.svg?style=flat)](https://travis-ci.org/brownsoo/ReSwiftConsumer)
+[![CI Status](http://img.shields.io/travis/brownsoo/ReSwift-Consumer.svg?style=flat)](https://travis-ci.org/brownsoo/ReSwift-Consumer)
 [![Version](https://img.shields.io/cocoapods/v/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
 [![License](https://img.shields.io/cocoapods/l/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
 [![Platform](https://img.shields.io/cocoapods/p/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
