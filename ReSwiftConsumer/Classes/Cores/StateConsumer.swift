@@ -2,8 +2,8 @@
 //  StateConsumer.swift
 //  ReSwiftConsumer
 //
-//  Created by hanhyonsoo on 2017. 12. 23..
-//  Copyright © 2017년 Hansoo Labs. All rights reserved.
+//  Created by brownsoo on 2017. 12. 23..
+//  Copyright © 2017년 HansooLabs. All rights reserved.
 //
 
 import Foundation

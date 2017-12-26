@@ -2,8 +2,8 @@
 //  MainInteractor.swift
 //  ReSwiftConsumer_Example
 //
-//  Created by hanhyonsoo on 2017. 12. 25..
-//  Copyright © 2017년 CocoaPods. All rights reserved.
+//  Created by brownsoo on 2017. 12. 25..
+//  Copyright © 2017년 HansooLabs. All rights reserved.
 //
 
 import Foundation

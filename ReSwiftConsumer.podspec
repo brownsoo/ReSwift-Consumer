@@ -18,7 +18,9 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Now deveoping
+ReSwiftConsumer는 ReSwift에 속성 선택함수(Property Selector)를 연결하여 사용한 것입니다.
+ReSwiftConsumer를 사용해서 ReSwift의 State 중에서 자신이 원하는 속성값의 변경만 알아챌 수 있습니다.
+ViewController 단에서 사용할 수 있는 콤포넌트를 포함하고 있습니다.
                        DESC
 
   s.homepage         = 'https://github.com/brownsoo/ReSwiftConsumer'

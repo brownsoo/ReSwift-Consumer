@@ -3,7 +3,7 @@
 //  ReSwiftConsumer
 //
 //  Created by hyonsoo han on 2017. 11. 3..
-//  Copyright © 2017년 Hansoo Labs. All rights reserved.
+//  Copyright © 2017년 HansooLabs. All rights reserved.
 //
 
 import UIKit
