@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Consumes various typed states
+/// Links various type consumer
 public class StateConsumer<S : Equatable>: Consumer {
     
     public typealias State = S
@@ -24,14 +24,14 @@ public class StateConsumer<S : Equatable>: Consumer {
     
     public func consume(newState: S) {
         consumers.forEach { con in
-            con.consume(prev: previousState, curr: newState)
+            con.consume(old: previousState, new: newState)
         }
         self.previousState = newState
     }
     
-    public func consume(prev: S?, curr: S) {
+    public func consume(old: S?, new: S?) {
         consumers.forEach { con in
-            con.consume(prev: prev, curr: curr)
+            con.consume(old: old, new: new)
         }
     }
     
@@ -45,54 +45,77 @@ public class StateConsumer<S : Equatable>: Consumer {
     
     // MARK: for single property
     
-    public func add<T: Equatable>(selector: @escaping (S) -> T?,
-                                  consumer: @escaping (S, T?) -> Void) {
-        add(SelectiveConsumer(selector, { state,_,curr in consumer(state, curr)} ))
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
+                                  _ consumer: @escaping (S?, T?) -> Void) {
+        add(SelectiveConsumer(selector, { state,_,new in consumer(state, new)} ))
     }
-    
-    public func add<T: Equatable>(selector: @escaping (S) -> T?,
-                                  consumer: @escaping (T?) -> Void) {
-        add(SelectiveConsumer(selector, { _, _, curr in consumer(curr) }))
+    // new value is nullable
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
+                                  _ consumer: @escaping (T?) -> Void) {
+        add(SelectiveConsumer(selector, { _, _, new in consumer(new) }))
     }
-    
-    public func add<T: Equatable>(selector: @escaping (S) -> T?,
-                                  consumer: @escaping (T?, T?) -> Void) {
-        add(SelectiveConsumer(selector, { _,prev,curr in consumer(prev, curr)} ))
+    // new value is nullable
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
+                                  _ consumer: @escaping (T?, T?) -> Void) {
+        add(SelectiveConsumer(selector, { _,old,new in consumer(old, new)} ))
     }
-    // current value is not null
-    public func add<T: Equatable>(selector: @escaping (S) -> T?,
-                                  consumer: @escaping (T?, T) -> Void) {
-        add(SelectiveConsumer(selector, { _,prev,curr in
-            if curr != nil {
-                consumer(prev, curr!)
+    // new value is not nullable
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
+                                  _ consumer: @escaping (T?, T) -> Void) {
+        add(SelectiveConsumer(selector, { _,old,new in
+            if new != nil {
+                consumer(old, new!)
             }
         } ))
     }
-    // current value is not null
-    public func add<T: Equatable>(selector: @escaping (S) -> T?,
-                                  consumer: @escaping (T) -> Void) {
-        add(SelectiveConsumer(selector, { _,_,curr in
-            if curr != nil {
-                consumer(curr!)
+    // new value is not nullable
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
+                                  _ consumer: @escaping (T) -> Void) {
+        add(SelectiveConsumer(selector, { _,_,new in
+            if new != nil {
+                consumer(new!)
             }
         } ))
     }
     
     // MARK: for Array
     
-    public func add<T: Equatable>(selector: @escaping (S) -> [T]?,
-                                  consumer: @escaping ([T]?, [T]?) -> Void) {
-        add(SelectiveArrayConsumer(selector, { _,prev,curr in
-            consumer(prev, curr)
+    // Nullable new value
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> [T]?,
+                                  _ consumer: @escaping ([T]?, [T]?) -> Void) {
+        add(SelectiveArrayConsumer(selector, { _,old,new in
+            consumer(old, new!)
         } ))
     }
     
-    public func add<T: Equatable>(selector: @escaping (S) -> [T]?,
-                                  consumer: @escaping ([T]?, [T]) -> Void) {
-        add(SelectiveArrayConsumer(selector, { _,prev,curr in
-            if curr != nil {
-                consumer(prev, curr!)
+    // observing Not nullable new value
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> [T]?,
+                                  _ consumer: @escaping ([T]?, [T]) -> Void) {
+        add(SelectiveArrayConsumer(selector, { _,old,new in
+            if new != nil {
+                consumer(old, new!)
             }
         } ))
     }
+    
+    // MARK: for predictor
+    
+    // observing Nullable new value
+    public func add<T>(_ selector: @escaping (S?) -> T?,
+                       _ consumer: @escaping (T?, T?) -> Void,
+                       predictor: @escaping (T, T) -> Bool) {
+        add(PredictConsumer(selector, { _, old, new in
+            consumer(old, new)
+        }, predictor))
+    }
+    
+    // observing Not nullable new value
+    public func add<T>(_ selector: @escaping (S?) -> T?,
+                       _ consumer: @escaping (T?, T) -> Void,
+                       predictor: @escaping (T, T) -> Bool) {
+        add(PredictConsumer(selector, { _, old, new in
+            if new != nil { consumer(old, new!) }
+        }, predictor))
+    }
+    
 }

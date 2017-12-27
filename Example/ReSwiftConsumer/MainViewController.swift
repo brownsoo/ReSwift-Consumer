@@ -30,7 +30,8 @@ class MainViewController: StateViewController<MainPageState, MainInteractor> {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor = MainInteractor()
-        pageConsumer?.add(selector: {state in state.count}, consumer: onCountChanged)
+        pageConsumer?.add({state in state?.count}, onCountChanged)
+        // TODO: Add PredictConsumer
     }
     
     override func viewDidDisappear(_ animated: Bool) {

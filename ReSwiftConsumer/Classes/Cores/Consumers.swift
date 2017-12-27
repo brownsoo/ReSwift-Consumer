@@ -10,81 +10,126 @@ import Foundation
 
 public protocol Consumer {
     associatedtype State
-    func consume(prev: State?, curr: State) -> Void
+    func consume(old: State?, new: State?) -> Void
 }
 
-public class TypedConsumer<S>: Consumer {
+open class TypedConsumer<S>: Consumer {
     public typealias State = S
-    public func consume(prev: S?, curr: S) {}
+    open func consume(old: S?, new: S?) {}
 }
 
-/// 상태에서 선택된 속성의 변화를 소비한다.
+/// Links a property selector of State with a observer to notify changes.
 public class SelectiveConsumer<S : Equatable, T : Equatable>: TypedConsumer<S> {
     
     typealias State = S
     
-    let selector: (S) -> T?
-    let consumer: (S, T?, T?) -> Void
+    let selector: (S?) -> T?
+    let consumer: (S?, T?, T?) -> Void
     
-    init(_ selector: @escaping (S) -> T?,
-         _ consumer: @escaping (S, T?, T?) -> Void) {
+    init(_ selector: @escaping (S?) -> T?,
+         _ consumer: @escaping (S?, T?, T?) -> Void) {
         self.selector = selector
         self.consumer = consumer
     }
     
-    override public func consume(prev: S?, curr: S) {
-        let prevValue: T?
-        if prev != nil {
-            prevValue = selector(prev!)
-        } else {
-            prevValue = nil
-        }
-        let currValue = selector(curr)
+    override open func consume(old: S?, new: S?) {
+        let oldValue: T?
+        if old != nil { oldValue = selector(old!) }
+        else { oldValue = nil }
+        let newValue: T?
+        if new != nil { newValue = selector(new!) }
+        else { newValue = nil }
         
-        if prevValue != currValue {
+        if oldValue == nil && newValue == nil {
+            return
+        }
+        if (oldValue == nil || newValue == nil) || oldValue != newValue {
             DispatchQueue.main.async {
-                self.consumer(curr, prevValue, currValue)
+                self.consumer(new, oldValue, newValue)
             }
         }
     }
 }
 
-/// 상태에서 선택된 배열 속성의 변화를 소비한다.
-public class SelectiveArrayConsumer<S : Equatable, T : Equatable>: TypedConsumer<S> {
+/// Links a array property selector of State with a observer to notify changes.
+public class SelectiveArrayConsumer<S: Equatable, T: Equatable>: TypedConsumer<S> {
     
     typealias State = S
     
-    let selector: (S) -> [T]?
-    let consumer: (S, [T]?, [T]?) -> Void
+    let selector: (S?) -> [T]?
+    let consumer: (S?, [T]?, [T]?) -> Void
     
-    init(_ selector: @escaping (S) -> [T]?,
-         _ consumer: @escaping (S, [T]?, [T]?) -> Void) {
+    init(_ selector: @escaping (S?) -> [T]?,
+         _ consumer: @escaping (S?, [T]?, [T]?) -> Void) {
         self.selector = selector
         self.consumer = consumer
     }
     
-    override public func consume(prev: S?, curr: S) {
-        let prevValue: [T]?
-        if prev != nil {
-            prevValue = selector(prev!)
-        } else {
-            prevValue = nil
-        }
-        let currValue = selector(curr)
-        if (prevValue == nil && currValue == nil) {
+    override open func consume(old: S?, new: S?) {
+        let oldValue: [T]?
+        if old != nil { oldValue = selector(old!) }
+        else { oldValue = nil }
+        let newValue: [T]?
+        if new != nil { newValue = selector(new!) }
+        else { newValue = nil }
+        
+        if (oldValue == nil && newValue == nil) {
             return
         }
         
-        if prevValue != nil && currValue != nil {
-            if !prevValue!.elementsEqual(currValue!) {
+        if oldValue != nil && newValue != nil {
+            if !oldValue!.elementsEqual(newValue!) {
                 DispatchQueue.main.async {
-                    self.consumer(curr, prevValue, currValue)
+                    self.consumer(new, oldValue, newValue)
                 }
             }
         } else {
             DispatchQueue.main.async {
-                self.consumer(curr, prevValue, currValue)
+                self.consumer(new, oldValue, newValue)
             }
         }
     }
+}
+
+
+public class PredictConsumer<S: Equatable, T: Any>: TypedConsumer<S> {
+    
+    typealias State = S
+    
+    let selector: (S?) -> T?
+    let consumer: (S?, T?, T?) -> Void
+    let predictor: (T, T) -> Bool
+    
+    init(_ selector: @escaping (S?) -> T?,
+         _ consumer: @escaping (S?, T?, T?) -> Void,
+         _ predictor: @escaping (T, T) -> Bool) {
+        self.selector = selector
+        self.consumer = consumer
+        self.predictor = predictor
+    }
+    
+    public override func consume(old: S?, new: S?) {
+        let oldValue: T?
+        if old != nil { oldValue = selector(old) }
+        else { oldValue = nil }
+        let newValue: T?
+        if new != nil { newValue = selector(new) }
+        else  { newValue = nil}
+        
+        if oldValue == nil && newValue == nil {
+            return
+        }
+        if oldValue != nil && newValue == nil {
+            if !self.predictor(oldValue!, newValue!) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.consumer(new, oldValue, newValue)
+                }
+            }
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.consumer(new, oldValue, newValue)
+            }
+        }
+    }
+    
 }

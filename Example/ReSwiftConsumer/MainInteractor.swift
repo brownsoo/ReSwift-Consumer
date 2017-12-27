@@ -38,7 +38,7 @@ class MainInteractor: ReStateInteractor<MainPageState>, StoreSubscriber {
     
     override func bindState() {
         super.bindState()
-        appConsumer.add(selector: {state in state.foreground}, consumer: onForegroundChanged)
+        appConsumer.add({state in state?.foreground},  onForegroundChanged)
         appStore.subscribe(self) { subscription in
             subscription.skipRepeats()
         }

@@ -17,7 +17,7 @@ class SubViewController: StateSharedViewController<MainPageState> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.yellow
-        sharedConsumer?.add(selector: {state in state.count}, consumer: onCountChanged)
+        sharedConsumer?.add({state in state?.count}, onCountChanged)
         
         if let count = sharedStore?.state.count {
             onCountChanged(prev: nil, curr: count)
