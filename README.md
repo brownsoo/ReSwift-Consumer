@@ -1,9 +1,14 @@
 # ReSwiftConsumer
 
-### With ReSwiftConsumer you can consume segmented property changes of state.
+## NOW DEVELOPING ...
 
-ReSwiftConsumer는 ReSwift에 속성 선택함수(Property Selector)를 연결하여 사용한 것입니다.
+> With ReSwiftConsumer you can consume segmented property changes of state.
+
+ReSwiftConsumer는 [ReSwift](https://github.com/ReSwift/ReSwift)에 속성 선택함수(Property Selector)를 연결하여 사용한 것입니다.
 ReSwiftConsumer를 사용해서 ReSwift의 State 중에서 자신이 원하는 속성값의 변경만 알아챌 수 있습니다.
+
+**PageStoreSubscriber**
+It is sperated store subscriber.
 
 ViewController 단에서 바로 사용할 수 있는 다음과 같은 콤포넌트를 포함하고 있습니다.
 
@@ -33,6 +38,7 @@ ReSwiftConsumer is available through [CocoaPods](http://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```ruby
+pod 'ReSwift'
 pod 'ReSwiftConsumer'
 ```
 
