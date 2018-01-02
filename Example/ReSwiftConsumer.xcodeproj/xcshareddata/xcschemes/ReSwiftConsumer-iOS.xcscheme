@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "ReSwiftConsumer_iOS.app"
-               BlueprintName = "ReSwiftConsumer_iOS"
+               BuildableName = "ReSwiftConsumer-iOS.app"
+               BlueprintName = "ReSwiftConsumer-iOS"
                ReferencedContainer = "container:ReSwiftConsumer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "ReSwiftConsumer_Tests.xctest"
-               BlueprintName = "ReSwiftConsumer_Tests"
+               BuildableName = "ReSwiftConsumer-iOSTests.xctest"
+               BlueprintName = "ReSwiftConsumer-iOSTests"
                ReferencedContainer = "container:ReSwiftConsumer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "ReSwiftConsumer_Tests.xctest"
-               BlueprintName = "ReSwiftConsumer_Tests"
+               BuildableName = "ReSwiftConsumer-iOSTests.xctest"
+               BlueprintName = "ReSwiftConsumer-iOSTests"
                ReferencedContainer = "container:ReSwiftConsumer.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -58,8 +58,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "ReSwiftConsumer_iOS.app"
-            BlueprintName = "ReSwiftConsumer_iOS"
+            BuildableName = "ReSwiftConsumer-iOS.app"
+            BlueprintName = "ReSwiftConsumer-iOS"
             ReferencedContainer = "container:ReSwiftConsumer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,8 +82,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "ReSwiftConsumer_iOS.app"
-            BlueprintName = "ReSwiftConsumer_iOS"
+            BuildableName = "ReSwiftConsumer-iOS.app"
+            BlueprintName = "ReSwiftConsumer-iOS"
             ReferencedContainer = "container:ReSwiftConsumer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -101,8 +101,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "ReSwiftConsumer_iOS.app"
-            BlueprintName = "ReSwiftConsumer_iOS"
+            BuildableName = "ReSwiftConsumer-iOS.app"
+            BlueprintName = "ReSwiftConsumer-iOS"
             ReferencedContainer = "container:ReSwiftConsumer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -111,7 +111,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
