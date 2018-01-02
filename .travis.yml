@@ -13,12 +13,15 @@ branches:
   except:
     - gh-pages
 
+install:
+  - gem install xcpretty
+
 env:
   global:
     - LC_CTYPE=en_US.UTF-8
     - LANG=en_US.UTF-8
     - FRAMEWORK_NAME="ReSwiftConsumer"
-    - UPDATE_DOCS="true"
+    - UPDATE_DOCS="false"
 
 matrix:
   include:
@@ -46,6 +49,7 @@ script:
     -sdk "$SDK"
     -destination "$DESTINATION"
     -configuration Debug
+
     ONLY_ACTIVE_ARCH=YES
     GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
     GCC_GENERATE_TEST_COVERAGE_FILES=YES
