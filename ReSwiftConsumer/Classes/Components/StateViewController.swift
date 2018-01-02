@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-open class StateViewController<S, I: ReStateInteractor<S>> : UIViewController  {
+open class StateViewController<S, I: RePageInteractor<S>> : UIViewController  {
     
     open var interactor: I?
     

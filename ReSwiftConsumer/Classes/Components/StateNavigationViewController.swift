@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-open class StateNavigationViewController<S, I: ReStateInteractor<S>>: UINavigationController {
+open class StateNavigationViewController<S, I: RePageInteractor<S>>: UINavigationController {
     
     open var interactor: I?
     open var pageStore: Store<S>? {

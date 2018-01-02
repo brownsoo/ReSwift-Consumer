@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-open class ReStateInteractor<PS: StateType & Equatable>: StateBindable,
+open class RePageInteractor<PS: StateType & Equatable>: StateBindable,
     PageStoreSubscriber {
     
     public typealias PageStoreSubscriberStateType = PS
