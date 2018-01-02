@@ -4,6 +4,7 @@
 
 language: objective-c
 osx_image: xcode9.2
+
 notifications:
   email:
     - hansune@me.com
@@ -29,8 +30,8 @@ matrix:
 #     env: SCHEME="tvOS"   SDK="appletvsimulator11.0"  DESTINATION="OS=11.0,name=Apple TV 1080p"   SWIFT_VERSION="4.0"
 
 
-cache: cocoapods
-podfile: Example/Podfile
+# cache: cocoapods
+# podfile: Example/Podfile
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example

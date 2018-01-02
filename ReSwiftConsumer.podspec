@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ReSwiftConsumer'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'With ReSwiftConsumer you can consume segmented property changes of state.'
 
 # This description is used to generate tags and improve search results.
