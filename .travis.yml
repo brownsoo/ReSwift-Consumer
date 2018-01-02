@@ -30,43 +30,36 @@ matrix:
 #   - env: SCHEME="tvOS"   SDK="appletvsimulator11.0"  DESTINATION="OS=11.0,name=Apple TV 1080p"   SWIFT_VERSION="4.0"
 
 
-# cache: cocoapods
-# podfile: Example/Podfile
+cache: cocoapods
+podfile: Example/Podfile
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
-- pod repo update
+#- pod repo update
 - pod install --project-directory=Example
 
-script:
-  - set -o pipefail
-  - xcodebuild -version
-  - xcodebuild -showsdks
-  - xcodebuild 
-    -workspace Example/ReSwiftConsumer.xcworkspace 
-    -scheme "$FRAMEWORK_NAME-$SCHEME"
-    -sdk "$SDK"
-    -destination "$DESTINATION"
-    -configuration Debug
-
-    ONLY_ACTIVE_ARCH=YES
-    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
-    GCC_GENERATE_TEST_COVERAGE_FILES=YES
-    SWIFT_VERSION=$SWIFT_VERSION
-    test
-
-#   after_success:
-#     - bash <(curl -s https://codecov.io/bash) -J ReSwiftConsumer
-#     - test $TRAVIS_PULL_REQUEST == "false" &&
-#       test $TRAVIS_BRANCH == "master" &&
-#       test $UPDATE_DOCS == "true" &&
-#       .scripts/update-gh-pages
-
-
 # script:
-# - set -o pipefail 
-# - xcodebuild -version
-# - xcodebuild -showsdks
-# - xcodebuild test -enableCodeCoverage YES -workspace Example/ReSwiftConsumer.xcworkspace -scheme ReSwiftConsumer-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-# - pod lib lint
+#   - set -o pipefail
+#   - xcodebuild -version
+#   - xcodebuild -showsdks
+#   - xcodebuild 
+#     -workspace Example/ReSwiftConsumer.xcworkspace 
+#     -scheme "$FRAMEWORK_NAME-$SCHEME"
+#     -sdk "$SDK"
+#     -destination "$DESTINATION"
+#     -configuration Debug
+
+#     ONLY_ACTIVE_ARCH=YES
+#     GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
+#     GCC_GENERATE_TEST_COVERAGE_FILES=YES
+#     SWIFT_VERSION=$SWIFT_VERSION
+#     test
+
+
+script:
+- set -o pipefail 
+- xcodebuild -version
+- xcodebuild -showsdks
+- xcodebuild test -enableCodeCoverage YES -workspace Example/ReSwiftConsumer.xcworkspace -scheme ReSwiftConsumer-iOS -sdk iphonesimulator11.2 ONLY_ACTIVE_ARCH=NO | xcpretty
+- pod lib lint
 
 
