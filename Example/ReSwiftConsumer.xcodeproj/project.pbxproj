@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B9670596AE55D5C43729E50 /* Pods_ReSwiftConsumer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF91F21A81104C417EAEDD74 /* Pods_ReSwiftConsumer_Example.framework */; };
 		171B6B451FF068D300BFF7A5 /* CreateStateShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B441FF068D300BFF7A5 /* CreateStateShared.swift */; };
 		171B6B471FF06D4700BFF7A5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B461FF06D4700BFF7A5 /* AppState.swift */; };
 		171B6B491FF06DE400BFF7A5 /* MainPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B481FF06DE400BFF7A5 /* MainPageState.swift */; };
@@ -119,7 +118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B9670596AE55D5C43729E50 /* Pods_ReSwiftConsumer_Example.framework in Frameworks */,
 				A73BCEB31C699D5527513ED3 /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,9 +381,8 @@
 					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = TB576F3KJ6;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -960,8 +957,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TB576F3KJ6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReSwiftConsumer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -981,8 +978,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TB576F3KJ6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReSwiftConsumer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
