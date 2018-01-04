@@ -2,7 +2,7 @@
 //  PageStoreSubscriber.swift
 //  ReSwiftConsumer
 //
-//  Created by hyonsoo han on 2017. 10. 23..
+//  Created by brownsoo han on 2017. 10. 23..
 //  Copyright © 2017년 HansooLabs. All rights reserved.
 //
 

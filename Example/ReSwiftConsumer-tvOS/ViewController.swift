@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ReSwiftConsumer-tvOS
 //
-//  Created by hyonsoo han on 2018. 1. 2..
+//  Created by brownsoo han on 2018. 1. 2..
 //  Copyright © 2018년 HansooLabs. All rights reserved.
 //
 
