@@ -9,7 +9,7 @@
 import UIKit
 import ReSwiftConsumer
 
-class MainViewController: StateViewController<MainPageState, MainInteractor> {
+class MainViewController: StateViewController<MainPageState> {
 
     @IBOutlet weak var countLb: UILabel!
     @IBOutlet weak var containerView: UIView!

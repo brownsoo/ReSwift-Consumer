@@ -9,7 +9,7 @@
 import Foundation
 
 /// Links various type consumer
-public class StateConsumer<S : Equatable>: Consumer {
+public class StateConsumer<S>: Consumer {
     
     public typealias State = S
     
@@ -47,7 +47,7 @@ public class StateConsumer<S : Equatable>: Consumer {
     
     public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
                                   _ consumer: @escaping (S?, T?) -> Void) {
-        add(SelectiveConsumer(selector, { state,_,new in consumer(state, new)} ))
+        add(SelectiveConsumer(selector, { state, _, new in consumer(state, new)} ))
     }
     // new value is nullable
     public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
@@ -57,12 +57,12 @@ public class StateConsumer<S : Equatable>: Consumer {
     // new value is nullable
     public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
                                   _ consumer: @escaping (T?, T?) -> Void) {
-        add(SelectiveConsumer(selector, { _,old,new in consumer(old, new)} ))
+        add(SelectiveConsumer(selector, { _, old, new in consumer(old, new)} ))
     }
     // new value is not nullable
     public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
                                   _ consumer: @escaping (T?, T) -> Void) {
-        add(SelectiveConsumer(selector, { _,old,new in
+        add(SelectiveConsumer(selector, { _, old, new in
             if new != nil {
                 consumer(old, new!)
             }

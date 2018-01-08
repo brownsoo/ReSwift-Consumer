@@ -19,7 +19,7 @@ open class TypedConsumer<S>: Consumer {
 }
 
 /// Links a property selector of State with a observer to notify changes.
-public class SelectiveConsumer<S : Equatable, T : Equatable>: TypedConsumer<S> {
+public class SelectiveConsumer<S, T : Equatable>: TypedConsumer<S> {
     
     typealias State = S
     
@@ -52,7 +52,7 @@ public class SelectiveConsumer<S : Equatable, T : Equatable>: TypedConsumer<S> {
 }
 
 /// Links a array property selector of State with a observer to notify changes.
-public class SelectiveArrayConsumer<S: Equatable, T: Equatable>: TypedConsumer<S> {
+public class SelectiveArrayConsumer<S, T: Equatable>: TypedConsumer<S> {
     
     typealias State = S
     
@@ -92,7 +92,7 @@ public class SelectiveArrayConsumer<S: Equatable, T: Equatable>: TypedConsumer<S
 }
 
 
-public class PredictConsumer<S: Equatable, T: Any>: TypedConsumer<S> {
+public class PredictConsumer<S, T: Any>: TypedConsumer<S> {
     
     typealias State = S
     

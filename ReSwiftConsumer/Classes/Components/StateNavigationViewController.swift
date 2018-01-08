@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 import ReSwift
 
-open class StateNavigationViewController<S, I: RePageInteractor<S>>: UINavigationController {
+open class StateNavigationViewController<ReState>: UINavigationController where ReState: StateType {
     
-    open var interactor: I?
-    open var pageStore: Store<S>? {
+    open var interactor: RePageInteractor<ReState>?
+    
+    open var pageStore: Store<ReState>? {
         return interactor?.pageStore ?? nil
     }
-    open var pageConsumer: StateConsumer<S>? {
+    open var pageConsumer: StateConsumer<ReState>? {
         return interactor?.pageConsumer
     }
     

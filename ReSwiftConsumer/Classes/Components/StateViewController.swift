@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import ReSwift
 
-open class StateViewController<S, I: RePageInteractor<S>> : UIViewController  {
+open class StateViewController<ReState> : UIViewController where ReState: StateType & Equatable {
     
-    open var pageInteractor: I?
+    open var pageInteractor: RePageInteractor<ReState>?
     
-    open var pageStore: Store<S>? {
+    open var pageStore: Store<ReState>? {
         return pageInteractor?.pageStore ?? nil
     }
-    open var pageConsumer: StateConsumer<S>? {
+    open var pageConsumer: StateConsumer<ReState>? {
         return pageInteractor?.pageConsumer
     }
 

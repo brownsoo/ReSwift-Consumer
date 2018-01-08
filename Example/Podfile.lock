@@ -2,7 +2,7 @@ PODS:
   - Nimble (7.0.3)
   - Quick (1.2.0)
   - ReSwift (4.0.1)
-  - ReSwiftConsumer (0.1.4):
+  - ReSwiftConsumer (0.1.5):
     - ReSwift
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ SPEC CHECKSUMS:
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
-  ReSwiftConsumer: bc380875aa0f2ee14d3c885780cdf42bac6dc0fb
+  ReSwiftConsumer: 6d2c0e2e36a2efa818b5c6eb779e6cea3bce24c7
 
 PODFILE CHECKSUM: dd3bd53ac09875887b35bfebacfa7a969f8e159a
 
