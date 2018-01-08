@@ -12,23 +12,23 @@ import ReSwift
 
 open class StateViewController<S, I: RePageInteractor<S>> : UIViewController  {
     
-    open var interactor: I?
+    open var pageInteractor: I?
     
     open var pageStore: Store<S>? {
-        return interactor?.pageStore ?? nil
+        return pageInteractor?.pageStore ?? nil
     }
     open var pageConsumer: StateConsumer<S>? {
-        return interactor?.pageConsumer
+        return pageInteractor?.pageConsumer
     }
 
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        interactor?.bindState()
+        pageInteractor?.bindState()
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        interactor?.unbindState()
+        pageInteractor?.unbindState()
     }
 }
 

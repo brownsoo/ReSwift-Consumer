@@ -29,7 +29,7 @@ class MainViewController: StateViewController<MainPageState, MainInteractor> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor = MainInteractor()
+        pageInteractor = MainInteractor()
         pageConsumer?.add({state in state?.count}, onCountChanged)
         // TODO: Add PredictConsumer
     }

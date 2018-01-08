@@ -9,14 +9,15 @@
 import ReSwift
 import UIKit
 
-open class StateSharedViewController<SharedState: StateType>: UIViewController, StateShared where SharedState: Equatable {
+open class StateSharedViewController<State>: UIViewController, StateShared
+    where State: Equatable & StateType {
     
-    public typealias S = SharedState
+    public typealias S = State
     
-    private(set) open var sharedStore: Store<SharedState>?
-    private(set) open var sharedConsumer: StateConsumer<SharedState>?
+    private(set) open var sharedStore: Store<State>?
+    private(set) open var sharedConsumer: StateConsumer<State>?
     
-    open func bind(store: Store<SharedState>, consumer: StateConsumer<SharedState>) {
+    open func bind(store: Store<State>, consumer: StateConsumer<State>) {
         self.sharedStore = store
         self.sharedConsumer = consumer
     }

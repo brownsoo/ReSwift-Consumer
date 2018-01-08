@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import ReSwift
 
-open class RePageInteractor<PS: StateType & Equatable>: StateBindable,
-    PageStoreSubscriber {
+open class RePageInteractor<PS: StateType & Equatable>: PageStoreSubscriber {
     
     public typealias PageStoreSubscriberStateType = PS
-    open var pageScriber: RePageStoreSubscriber<PS>?
+    
     open var pageStore:Store<PS>?
+    open var pageStoreScriber: RePageStoreSubscriber<PS>?
     open let pageConsumer = StateConsumer<PS>()
     
     public init() {
@@ -43,16 +43,16 @@ open class RePageInteractor<PS: StateType & Equatable>: StateBindable,
             state: getPageInitialState(),
             middleware: middleWare)
         
-        pageScriber = RePageStoreSubscriber(subscriber: self)
-        pageStore?.subscribe(pageScriber!) { subscription in
+        pageStoreScriber = RePageStoreSubscriber(subscriber: self)
+        pageStore?.subscribe(pageStoreScriber!) { subscription in
             subscription.skipRepeats()
         }
     }
     
     open func unbindState() {
         pageConsumer.removeAll()
-        if pageScriber != nil {
-            pageStore?.unsubscribe(pageScriber!)
+        if pageStoreScriber != nil {
+            pageStore?.unsubscribe(pageStoreScriber!)
         }
     }
     
