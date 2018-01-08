@@ -1,5 +1,5 @@
 //
-//  StateNavigationViewController.swift
+//  StateNavigationController.swift
 //  ReSwiftConsumer
 //
 //  Created by brownsoo han on 2017. 11. 2..
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-open class StateNavigationViewController<ReState>: UINavigationController where ReState: StateType {
+open class StateNavigationController<ReState>: UINavigationController where ReState: StateType {
     
     open var pageInteractor: RePageInteractor<ReState>?
     
