@@ -1,6 +1,6 @@
 # ReSwiftConsumer
 
-## NOW COLLECTING ... 지금은 정리 중입니다.
+## NOW COLLECTING ... 지금은 정리 중입니다. 간단한 예제(Example)를 통해 손흥민같이 빠르게 파악할 수 있을 겁니다.
 
 > With ReSwiftConsumer you can consume only the property changes of state in interesting. And you can have seperated store from global one state.
 
