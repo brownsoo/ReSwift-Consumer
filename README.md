@@ -12,7 +12,7 @@
 ReSwiftConsumer는 [ReSwift](https://github.com/ReSwift/ReSwift)에 속성 선택함수(Property selector)와 변경된 값에 대한 소비함수(Changed property consumer, Observer)를 연결하여, State의 특정 속성에 대해 반응시켜 개발할 수 있도록 도와줍니다. ReSwiftConsumer를 사용해서 ReSwift의 State 중에서 자신이 원하는 속성값의 변경만 알아챌 수 있습니다.
 
 
-**속성 선택함수를 이용해 멀티 옵저버를 `extension`으로 구현한 것이 있어 링크합니다. [ReSwift+select.swift](https://gist.github.com/nferruzzi/a36e2be5c5da7dbe25e90a56fd1049ad) 제가 고민했던 문제를 너무나도 간결하게 `Promise`형식으로 구현해놨습니다. Wow!!**
+> **속성 선택함수를 이용해 멀티 옵저버를 `extension`으로 구현한 것이 있어 링크합니다. [ReSwift+select.swift](https://gist.github.com/nferruzzi/a36e2be5c5da7dbe25e90a56fd1049ad) 제가 고민했던 문제를 너무나도 간결하게 `Promise`형식으로 구현해놨습니다. Wow!!**
 
 
 ## StateConsumer
