@@ -28,7 +28,7 @@ ViewController 단에서 사용할 수 있는 콤포넌트를 포함하고 있�
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'brownsoo' => 'hansune@me.com' }
   s.source           = { :git => 'https://github.com/brownsoo/ReSwift-Consumer.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/hansoolabs'
 
   s.ios.deployment_target = '10.3'
 
