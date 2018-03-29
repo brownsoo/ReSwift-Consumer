@@ -3,7 +3,7 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-osx_image: xcode9.2
+#osx_image: xcode9.2
 
 notifications:
   email:
@@ -25,10 +25,12 @@ env:
 
 matrix:
   include:
-#   - env: SCHEME="macOS"  SDK="macosx10.13"          DESTINATION="arch=x86_64"                    SWIFT_VERSION="4.0"
-    - env: SCHEME="iOS"    SDK="iphonesimulator11.2"  DESTINATION="OS=11.2,platform=iOS Simulator,name=iPhone X"          SWIFT_VERSION="4.0"
-#   - env: SCHEME="tvOS"   SDK="appletvsimulator11.0"  DESTINATION="OS=11.0,name=Apple TV 1080p"   SWIFT_VERSION="4.0"
-
+    #- osx_image: xcode9
+    #  env: SCHEME="macOS"  SDK="macosx10.13"          DESTINATION="arch=x86_64"                    SWIFT_VERSION="4.0"
+    - osx_image: xcode9
+      env: SCHEME="iOS"    SDK="iphonesimulator11.0"  DESTINATION="OS=11.0,name=iPhone 8"          SWIFT_VERSION="4.0"
+    #- osx_image: xcode9
+    #  env: SCHEME="tvOS"   SDK="appletvsimulator11.0"  DESTINATION="OS=11.0,name=Apple TV 1080p"   SWIFT_VERSION="4.0"
 
 cache: cocoapods
 podfile: Example/Podfile
@@ -37,30 +39,27 @@ before_install:
 - pod repo update
 - pod install --project-directory=Example
 
-# script:
-#   - set -o pipefail
-#   - xcodebuild -version
-#   - xcodebuild -showsdks
-#   - xcodebuild 
-#     test
-#     -workspace Example/ReSwiftConsumer.xcworkspace 
-#     -scheme "$FRAMEWORK_NAME-$SCHEME"
-#     -sdk "$SDK"
-#     -destination "$DESTINATION"
-#     -configuration Debug
-#     -enableCodeCoverage YES
-
-#     ONLY_ACTIVE_ARCH=YES
-#     GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
-#     GCC_GENERATE_TEST_COVERAGE_FILES=YES
-#     SWIFT_VERSION=$SWIFT_VERSION
-#     xcpretty
-
 script:
-- set -o pipefail 
-- xcodebuild -version
-- xcodebuild -showsdks
-- xcodebuild test -enableCodeCoverage YES -workspace Example/ReSwiftConsumer.xcworkspace -scheme ReSwiftConsumer-iOS -sdk iphonesimulator11.2 -destination 'platform=iOS Simulator,OS=11.2,name=iPhone X' -configuration Debug  ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
+  - xcodebuild
+    -project "$FRAMEWORK_NAME.xcodeproj"
+    -scheme "$FRAMEWORK_NAME-$SCHEME"
+    -sdk "$SDK"
+    -destination "$DESTINATION"
+    -configuration Debug
+    ONLY_ACTIVE_ARCH=YES
+    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
+    GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    SWIFT_VERSION=$SWIFT_VERSION
+    test
+
+after_success:
+#  - bash <(curl -s https://codecov.io/bash) -J ValueAnimator
+#  - test $TRAVIS_PULL_REQUEST == "false" &&
+#    test $TRAVIS_BRANCH == "master" &&
+#    test $UPDATE_DOCS == "true" &&
+#    .scripts/update-gh-pages
 
 
