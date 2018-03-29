@@ -35,7 +35,7 @@ cache: cocoapods
 podfile: Example/Podfile
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
-- pod repo update
+#- pod repo update
 - pod install --project-directory=Example
 
 script:
@@ -43,15 +43,16 @@ script:
   - xcodebuild -version
   - xcodebuild -showsdks
   - xcodebuild
-    -project "$FRAMEWORK_NAME.xcodeproj"
+    -workspace "Example/$FRAMEWORK_NAME.xcworkspace"
     -scheme "$FRAMEWORK_NAME-$SCHEME"
     -sdk "$SDK"
     -destination "$DESTINATION"
     -configuration Debug
-    ONLY_ACTIVE_ARCH=YES
-    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
-    GCC_GENERATE_TEST_COVERAGE_FILES=YES
-    SWIFT_VERSION=$SWIFT_VERSION
+    -enableCodeCoverage YES
+    ONLY_ACTIVE_ARCH=NO
+    #GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
+    #GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    #SWIFT_VERSION=$SWIFT_VERSION
     test
 
 #after_success:

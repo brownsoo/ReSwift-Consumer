@@ -4,6 +4,7 @@
 
 > With ReSwiftConsumer you can consume only the property changes of state in interesting. And you can have seperated store from global one state.
 
+[![CI Status](http://img.shields.io/travis/brownsoo/ReSwift-Consumer.svg?style=flat)](https://travis-ci.org/brownsoo/ReSwift-Consumer)
 [![Version](https://img.shields.io/cocoapods/v/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
 [![License](https://img.shields.io/cocoapods/l/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
 [![Platform](https://img.shields.io/cocoapods/p/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
