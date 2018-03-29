@@ -1,26 +1,10 @@
-#
-# Be sure to run `pod lib lint ReSwiftConsumer.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'ReSwiftConsumer'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = 'With ReSwiftConsumer you can consume segmented property changes of state.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
-ReSwiftConsumer는 ReSwift에 속성 선택함수(Property Selector)를 연결하여 사용한 것입니다.
-ReSwiftConsumer를 사용해서 ReSwift의 State 중에서 자신이 원하는 속성값의 변경만 알아챌 수 있습니다.
-ViewController 단에서 사용할 수 있는 콤포넌트를 포함하고 있습니다.
+With ReSwift Consumer, we can observe the property changes interested using Property selector.
+It include some components that can be used in ViewController level.
                        DESC
 
   s.homepage         = 'https://github.com/brownsoo/ReSwift-Consumer'
@@ -30,9 +14,12 @@ ViewController 단에서 사용할 수 있는 콤포넌트를 포함하고 있�
   s.source           = { :git => 'https://github.com/brownsoo/ReSwift-Consumer.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/hansoolabs'
 
-  s.ios.deployment_target = '10.3'
+  s.ios.deployment_target     = '10.3'
+#s.osx.deployment_target     = '10.10'
+#s.tvos.deployment_target    = '9.0'
+#s.watchos.deployment_target = '2.0'
 
-  s.source_files = 'ReSwiftConsumer/Classes/**/*'
+  s.source_files = 'ReSwiftConsumer/Classes/**/*.swift'
   
   # s.resource_bundles = {
   #   'ReSwiftConsumer' => ['ReSwiftConsumer/Assets/*.png']
