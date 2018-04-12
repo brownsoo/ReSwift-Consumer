@@ -12,6 +12,9 @@ import Foundation
 public class StateConsumer<S>: Consumer {
 
     public typealias State = S
+    /// if true, the consumer will consume previous state when that is added into StateConsumer.
+    /// default: false
+    public var consumeInstantly: Bool = false
 
     private var previousState: S? = nil
     private var consumers = Set<TypedConsumer<State>>()
@@ -38,6 +41,9 @@ public class StateConsumer<S>: Consumer {
 
     public func add(_ consumer: TypedConsumer<S>) {
         consumers.update(with: consumer)
+        if consumeInstantly {
+            consumer.consume(old: nil, new: previousState)
+        }
     }
     
     public func remove(_ consumer: TypedConsumer<S>) {
