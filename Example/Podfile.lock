@@ -1,26 +1,24 @@
 PODS:
-  - Nimble (7.0.3)
-  - Quick (1.2.0)
   - ReSwift (4.0.1)
-  - ReSwiftConsumer (0.1.6):
+  - ReSwiftConsumer (0.1.8):
     - ReSwift
 
 DEPENDENCIES:
-  - Nimble (~> 7.0.2)
-  - Quick (~> 1.2.0)
   - ReSwift
   - ReSwiftConsumer (from `../`)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ReSwift
+
 EXTERNAL SOURCES:
   ReSwiftConsumer:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
-  ReSwiftConsumer: a93d2a2169bdcba372a25b522ac305cd0fa001c1
+  ReSwiftConsumer: 23f963f723e1df8ed2057816e185550ea57865e5
 
-PODFILE CHECKSUM: ed6cb4958587180ee523a0a0e226d87c2afc0064
+PODFILE CHECKSUM: f187350d23351242ecf623e2131ec392d7d0d053
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

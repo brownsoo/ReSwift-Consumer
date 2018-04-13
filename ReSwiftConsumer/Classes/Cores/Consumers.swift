@@ -19,14 +19,10 @@ open class TypedConsumer<S>: Consumer, Hashable {
     public var hashValue: Int {
         return self.objectIdentifier.hashValue
     }
-
-//    convenience init() {
-//        self.objectIdentifier = ObjectIdentifier(self)
-//    }
-
+    
     open func consume(old: S?, new: S?) {
     }
-
+    
     public static func ==(left: TypedConsumer<S>, right: TypedConsumer<S>) -> Bool {
         return left.objectIdentifier == right.objectIdentifier
     }
@@ -124,44 +120,23 @@ public class PredictConsumer<S, T: Any>: TypedConsumer<S> {
 
     let selector: (S?) -> T?
     let consumer: (S?, T?, T?) -> Void
-    let predictor: (T, T) -> Bool
+    let predictor: (T?, T?) -> Bool
 
     init(_ selector: @escaping (S?) -> T?,
          _ consumer: @escaping (S?, T?, T?) -> Void,
-         _ predictor: @escaping (T, T) -> Bool) {
+         _ predictor: @escaping (T?, T?) -> Bool) {
         self.selector = selector
         self.consumer = consumer
         self.predictor = predictor
     }
 
     public override func consume(old: S?, new: S?) {
-        let oldValue: T?
-        if old != nil {
-            oldValue = selector(old)
-        } else {
-            oldValue = nil
-        }
-        let newValue: T?
-        if new != nil {
-            newValue = selector(new)
-        } else {
-            newValue = nil
-        }
-
-        if oldValue == nil && newValue == nil {
-            return
-        }
-        if oldValue != nil && newValue == nil {
-            if !self.predictor(oldValue!, newValue!) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.consumer(new, oldValue, newValue)
-                }
-            }
-        } else {
+        let oldValue = selector(old)
+        let newValue = selector(new)
+        if !self.predictor(oldValue, newValue) {
             DispatchQueue.main.async { [weak self] in
                 self?.consumer(new, oldValue, newValue)
             }
         }
     }
-
 }

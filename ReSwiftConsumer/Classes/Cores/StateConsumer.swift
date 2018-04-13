@@ -130,21 +130,21 @@ public class StateConsumer<S>: Consumer {
     // observing Nullable new value
     public func add<T>(_ selector: @escaping (S?) -> T?,
                        _ consumer: @escaping (T?, T?) -> Void,
-                       predictor: @escaping (T?, T?) -> Bool) {
+                       predict: @escaping (T?, T?) -> Bool) {
         add(PredictConsumer(selector, { _, old, new in
             consumer(old, new)
-        }, predictor))
+        }, predict))
     }
 
     // observing Not nullable new value
     public func add<T>(_ selector: @escaping (S?) -> T?,
                        _ consumer: @escaping (T?, T) -> Void,
-                       predictor: @escaping (T?, T?) -> Bool) {
+                       predict: @escaping (T?, T?) -> Bool) {
         add(PredictConsumer(selector, { _, old, new in
             if new != nil {
                 consumer(old, new!)
             }
-        }, predictor))
+        }, predict))
     }
 
 }
