@@ -34,7 +34,7 @@ class PredictConsumerTests: XCTestCase {
         }
         consumer.add({ state in state?.map },
                      consumption,
-                     predictor: { old, new -> Bool in old == new })
+                     predict: { old, new -> Bool in old == new })
         consumer.consume(newState: a)
         
         wait(for: [expectation], timeout: 0.5)
