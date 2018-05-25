@@ -30,12 +30,12 @@ class MainViewController: StateViewController<MainPageState> {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageInteractor = MainInteractor()
-        pageConsumer?.add({state in state?.count}, onCountChanged)
-        // TODO: Add PredictConsumer
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pageConsumer?.consumeInstantly = true
+        pageConsumer?.add({state in state?.count}, onCountChanged)
     }
     
     @IBAction func onClickPlus(_ sender: UIButton) {

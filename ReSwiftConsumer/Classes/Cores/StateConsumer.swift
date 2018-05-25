@@ -41,11 +41,9 @@ public class StateConsumer<S>: TypedConsumer<S> {
     
     @discardableResult
     public func add(_ consumer: TypedConsumer<S>) -> TypedConsumer<S> {
-        let result = consumers.update(with: consumer)
-        if result != nil {
-            if consumeInstantly {
-                consumer.consume(old: nil, new: previousState)
-            }
+        consumers.update(with: consumer)
+        if consumeInstantly {
+            consumer.consume(old: nil, new: previousState)
         }
         return consumer
     }

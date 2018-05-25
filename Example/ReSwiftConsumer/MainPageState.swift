@@ -10,10 +10,7 @@ import Foundation
 import ReSwift
 
 struct MainPageState: StateType, Equatable {
-    var count: Int = 0
-    public static func ==(lhs: MainPageState, rhs: MainPageState) -> Bool {
-        return lhs.count == rhs.count
-    }
+    var count: Int = 10
 }
 
 

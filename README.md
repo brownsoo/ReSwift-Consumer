@@ -1,6 +1,7 @@
 # ReSwiftConsumer
 
-## NOW COLLECTING ... 지금은 정리 중입니다. 간단한 예제(Example)를 통해 손흥민같이 빠르게 파악할 수 있을 겁니다.
+## 지금은 정리 중입니다. 
+간단한 예제(Example)를 통해 손흥민같이 빠르게 파악할 수 있을 겁니다. NOW COLLECTING ... Yon can  know how this works with ReSwift state by Example project.
 
 > With ReSwiftConsumer you can consume only the property changes of state in interesting. And you can have seperated store from global one state.
 
@@ -48,6 +49,11 @@ class CounterViewController: UIViewController, StoreSubscriber {
 
     override func viewWillAppear(_ animated: Bool) {
         mainStore.subscribe(self)
+        
+        // add consumer of property selectively
+        consumer.add({state in state.counter}, onCounterChanged)
+        consumer.add({state in state.name}, onNameChanged)
+        consumer.add({state in state.works}, onWorksChanged)
     }
     override func viewWillDisappear(_ animated: Bool) {
         mainStore.unsubscribe(self)
@@ -58,13 +64,6 @@ class CounterViewController: UIViewController, StoreSubscriber {
     func newState(state: AppState) {
         // pass new state into consumer
         consumer.consume(newState: state)
-    }
-
-    override func viewDidLoad() {
-        // add consumer of property selectively
-        consumer.add({state in state.counter}, onCounterChanged)
-        consumer.add({state in state.name}, onNameChanged)
-        consumer.add({state in state.works}, onWorksChanged)
     }
 
     // MARK: Consumers
@@ -131,8 +130,6 @@ ViewController 단에서 바로 사용할 수 있는 다음과 같은 콤포넌�
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 샘플 앱의 코드를 확인해보세요.
-
-*예제는 작성해야함...*
 
 ## Requirements
 
