@@ -12,7 +12,7 @@ import UIKit
 open class StateSharedViewController<State>: UIViewController, StateShared
     where State: Equatable & StateType {
     
-    public typealias S = State
+    public typealias StateSharedType = State
     
     private(set) open var sharedStore: Store<State>?
     private(set) open var sharedConsumer: StateConsumer<State>?

@@ -11,10 +11,9 @@ import ReSwift
 
 public protocol StateShared {
     
-    associatedtype S: StateType where S: Equatable
+    associatedtype StateSharedType: StateType
     
-    var sharedStore: Store<S>? { get }
-    var sharedConsumer: StateConsumer<S>? { get }
+    var sharedStore: Store<StateSharedType>? { get }
+    var sharedConsumer: StateConsumer<StateSharedType>? { get }
+    func bind(store: Store<StateSharedType>, consumer: StateConsumer<StateSharedType>)
 }
-
-
