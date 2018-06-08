@@ -13,6 +13,7 @@ public class StateConsumer<S>: TypedConsumer<S> {
     
     public typealias State = S
     /// if true, the consumer will consume previous state when that is added into StateConsumer.
+    /// Old argument of consumer must be nullable.
     /// default: false
     public var consumeInstantly: Bool = false
     
