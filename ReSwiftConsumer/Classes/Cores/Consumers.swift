@@ -43,23 +43,9 @@ public class SelectiveConsumer<S, T: Equatable>: TypedConsumer<S> {
     }
 
     override open func consume(old: S?, new: S?) {
-        let oldValue: T?
-        if old != nil {
-            oldValue = selector(old!)
-        } else {
-            oldValue = nil
-        }
-        let newValue: T?
-        if new != nil {
-            newValue = selector(new!)
-        } else {
-            newValue = nil
-        }
-
-        if oldValue == nil && newValue == nil {
-            return
-        }
-        if (oldValue == nil || newValue == nil) || oldValue != newValue {
+        let oldValue = selector(old)
+        let newValue = selector(new)
+        if oldValue != newValue {
             DispatchQueue.main.async {
                 self.consumer(new, oldValue, newValue)
             }
@@ -82,19 +68,8 @@ public class SelectiveArrayConsumer<S, T: Equatable>: TypedConsumer<S> {
     }
 
     override open func consume(old: S?, new: S?) {
-        let oldValue: [T]?
-        if old != nil {
-            oldValue = selector(old!)
-        } else {
-            oldValue = nil
-        }
-        let newValue: [T]?
-        if new != nil {
-            newValue = selector(new!)
-        } else {
-            newValue = nil
-        }
-
+        let oldValue = selector(old)
+        let newValue = selector(new)
         if (oldValue == nil && newValue == nil) {
             return
         }
