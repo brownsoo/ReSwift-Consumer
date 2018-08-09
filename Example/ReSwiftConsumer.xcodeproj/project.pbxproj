@@ -44,8 +44,6 @@
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* PredictConsumerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictConsumerTests.swift; sourceTree = "<group>"; };
 		717CF34BF56789BB06FF41DE /* Pods-ReSwiftConsumer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReSwiftConsumer-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReSwiftConsumer-iOS/Pods-ReSwiftConsumer-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		71D26584DDC1EC3767BD3EF0 /* Pods-ReSwiftConsumer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReSwiftConsumer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReSwiftConsumer_Tests/Pods-ReSwiftConsumer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A0CDC48B7D77A9F1C07FF3D /* Pods_ReSwiftConsumer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReSwiftConsumer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +74,6 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for ReSwiftConsumer */,
-				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				D8FACCECD5D99CD97A7D2353 /* Pods */,
 				86A38B790B197EBEF05781D7 /* Frameworks */,
@@ -108,15 +105,6 @@
 			);
 			name = "Example for ReSwiftConsumer";
 			path = ReSwiftConsumer;
-			sourceTree = "<group>";
-		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
-				607FACEB1AFB9204008FA782 /* PredictConsumerTests.swift */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
@@ -189,7 +177,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = HansooLabs;
 				TargetAttributes = {

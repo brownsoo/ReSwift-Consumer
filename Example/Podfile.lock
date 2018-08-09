@@ -1,6 +1,6 @@
 PODS:
   - ReSwift (4.0.1)
-  - ReSwiftConsumer (0.2.0):
+  - ReSwiftConsumer (0.3.0):
     - ReSwift
 
 DEPENDENCIES:
@@ -8,7 +8,7 @@ DEPENDENCIES:
   - ReSwiftConsumer (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - ReSwift
 
 EXTERNAL SOURCES:
@@ -17,8 +17,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
-  ReSwiftConsumer: 02c72fec6829e22334f8ce22e8da4f778ab5f052
+  ReSwiftConsumer: cb6282fcd41212e959127979366f37ff61be0a88
 
-PODFILE CHECKSUM: f187350d23351242ecf623e2131ec392d7d0d053
+PODFILE CHECKSUM: 9275906c6d43e05869acb0bd61755d6512c929b2
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
