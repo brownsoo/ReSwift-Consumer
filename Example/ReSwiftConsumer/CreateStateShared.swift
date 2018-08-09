@@ -14,14 +14,14 @@ import ReSwiftConsumer
 public protocol CreateViaStoryboard {
     static var storyboardName: String { get }
     static var storyboardIdentity: String { get }
-    static func newInstance() -> UIViewController
+    static func newInstance<T>() -> T where T: UIViewController
 }
 
 public extension CreateViaStoryboard {
     
-    static func newInstance() -> UIViewController {
+    static func newInstance<T>() -> T where T: UIViewController {
         let story = UIStoryboard(name: storyboardName, bundle: nil)
-        return story.instantiateViewController(withIdentifier: storyboardIdentity)
+        return story.instantiateViewController(withIdentifier: storyboardIdentity) as! T
     }
 }
 
@@ -29,16 +29,21 @@ public protocol CreateStateShared {
     
     associatedtype SharedState: StateType where SharedState: Equatable
     
-    static func newInstance() -> UIViewController
-    static func newStateSharedInstance(store: Store<SharedState>,
-                                       consumer: StateConsumer<SharedState>) -> StateSharedViewController<SharedState>?
+    static func newInstance<T>() -> T where T: UIViewController
+    static func newStateSharedInstance<T>(
+        store: Store<SharedState>,
+        consumer: StateConsumer<SharedState>) -> T? where T: StateSharedViewController<SharedState>
 }
 
 public extension CreateStateShared {
-    static func newStateSharedInstance(store: Store<SharedState>,
-                                       consumer: StateConsumer<SharedState>) -> StateSharedViewController<SharedState>? {
+    static func newInstance<T>() -> T where T: UIViewController {
+        return T()
+    }
+    static func newStateSharedInstance<T>(
+        store: Store<SharedState>,
+        consumer: StateConsumer<SharedState>) -> T? where T: StateSharedViewController<SharedState> {
         let vc = newInstance()
-        guard let shared = vc as? StateSharedViewController<SharedState> else {
+        guard let shared = vc as? T else {
             return nil
         }
         shared.bind(store: store, consumer: consumer)
@@ -51,16 +56,18 @@ public extension CreateStateShared {
 public protocol CreateStateSharedViaStoryboard: CreateViaStoryboard {
     
     associatedtype SharedState: StateType where SharedState: Equatable
-    static func newStateSharedInstance(store: Store<SharedState>,
-                                       consumer: StateConsumer<SharedState>) -> StateSharedViewController<SharedState>?
+    static func newStateSharedInstance<T>(
+        store: Store<SharedState>,
+        consumer: StateConsumer<SharedState>) -> T? where T: StateSharedViewController<SharedState>
 }
 
 public extension CreateStateSharedViaStoryboard {
     
-    static func newStateSharedInstance(store: Store<SharedState>,
-                                       consumer: StateConsumer<SharedState>) -> StateSharedViewController<SharedState>? {
+    static func newStateSharedInstance<T>(
+        store: Store<SharedState>,
+        consumer: StateConsumer<SharedState>) -> T? where T: StateSharedViewController<SharedState> {
         let vc = newInstance()
-        guard let shared = vc as? StateSharedViewController<SharedState> else {
+        guard let shared = vc as? T else {
             return nil
         }
         shared.bind(store: store, consumer: consumer)

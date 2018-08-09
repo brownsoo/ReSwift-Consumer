@@ -12,10 +12,16 @@ import UIKit
 open class StateSharedViewController<State>: UIViewController, StateShared
     where State: Equatable & StateType {
     
-    public typealias S = State
+    public typealias StateSharedType = State
     
     private(set) open var sharedStore: Store<State>?
     private(set) open var sharedConsumer: StateConsumer<State>?
+    public lazy var consumerBag: ConsumerBag<State>? = { [weak sharedConsumer] in
+        guard let sharedConsumer = sharedConsumer else {
+            return nil
+        }
+        return ConsumerBag<State>(sharedConsumer)
+    }()
     
     open func bind(store: Store<State>, consumer: StateConsumer<State>) {
         self.sharedStore = store
