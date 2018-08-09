@@ -9,7 +9,7 @@
 [![Version](https://img.shields.io/cocoapods/v/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
 [![License](https://img.shields.io/cocoapods/l/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
 [![Platform](https://img.shields.io/cocoapods/p/ReSwiftConsumer.svg?style=flat)](http://cocoapods.org/pods/ReSwiftConsumer)
-
+[![codebeat badge](https://codebeat.co/badges/734601dc-bf1b-404d-a260-0ff52265ad86)](https://codebeat.co/projects/github-com-brownsoo-reswift-consumer-master)
 
 ReSwiftConsumer는 [ReSwift](https://github.com/ReSwift/ReSwift)에 속성 선택함수(Property selector)와 변경된 값에 대한 소비함수(Changed property consumer, Observer)를 연결하여, State의 특정 속성에 대해 반응시켜 개발할 수 있도록 도와줍니다. ReSwiftConsumer를 사용해서 ReSwift의 State 중에서 자신이 원하는 속성값의 변경만 알아챌 수 있습니다.
 
