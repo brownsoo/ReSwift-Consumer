@@ -17,7 +17,7 @@ open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
     
     open var pageStore:Store<PS>? { return _pageStore }
     open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS>? = RePageStoreSubscriber(subscriber: self)
-    open let pageConsumer = StateConsumer<PS>()
+    public let pageConsumer = StateConsumer<PS>()
     
     private var _pageStore: Store<PS>?
     
