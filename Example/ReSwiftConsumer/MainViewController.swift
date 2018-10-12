@@ -9,7 +9,7 @@
 import UIKit
 import ReSwiftConsumer
 
-class MainViewController: StateViewController<MainPageState> {
+class MainViewController: StateViewController<MainState> {
 
     @IBOutlet weak var countLb: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -58,22 +58,22 @@ class MainViewController: StateViewController<MainPageState> {
     
     private func removeSubController(inactiveVc: UIViewController?) {
         if let vc = inactiveVc {
-            vc.willMove(toParentViewController: nil)
+            vc.willMove(toParent: nil)
             vc.view.removeFromSuperview()
-            vc.removeFromParentViewController()
+            vc.removeFromParent()
         }
     }
     
     private func activateSubController() {
         if let vc = activeController {
-            addChildViewController(vc)
+            addChild(vc)
             containerView.addSubview(vc.view)
             vc.view.translatesAutoresizingMaskIntoConstraints = false
             vc.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
             vc.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
             vc.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
             vc.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-            vc.didMove(toParentViewController: self)
+            vc.didMove(toParent: self)
         }
     }
     

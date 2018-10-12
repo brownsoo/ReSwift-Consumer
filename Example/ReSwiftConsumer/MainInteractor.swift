@@ -10,22 +10,22 @@ import Foundation
 import ReSwift
 import ReSwiftConsumer
 
-class MainInteractor: RePageInteractor<MainPageState>, StoreSubscriber {
+class MainInteractor: RePageInteractor<MainState>, StoreSubscriber {
     
     typealias StoreSubscriberStateType = AppState
     
     let appConsumer = StateConsumer<AppState>()
     
-    override func getPageReducer() -> (Action, MainPageState?) -> MainPageState {
+    override func getPageReducer() -> (Action, MainState?) -> MainState {
         return mainReducer
     }
     
-    override func getPageInitialState() -> MainPageState? {
-        return MainPageState()
+    override func getPageInitialState() -> MainState? {
+        return MainState()
     }
     
-    override func getPageMiddleWares() -> [Middleware<MainPageState>] {
-        let middle: Middleware<MainPageState> = { dispatch, getState in
+    override func getPageMiddleWares() -> [Middleware<MainState>] {
+        let middle: Middleware<MainState> = { dispatch, getState in
             return { next in
                 return { action in
                     print("page action: \(action)")

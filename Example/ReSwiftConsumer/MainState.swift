@@ -1,5 +1,5 @@
 //
-//  MainPageState.swift
+//  MainState.swift
 //  ReSwiftConsumer_Example
 //
 //  Created by brownsoo on 2017. 12. 25..
@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-struct MainPageState: StateType, Equatable {
+struct MainState: StateType, Equatable {
     var count: Int = 10
 }
 
@@ -19,8 +19,8 @@ struct MainActionIncreaseCount: MainAction {}
 struct MainActionDecreaseCount: MainAction {}
 
 
-func mainReducer(action: Action, state: MainPageState?) -> MainPageState {
-    var state = state ?? MainPageState()
+func mainReducer(action: Action, state: MainState?) -> MainState {
+    var state = state ?? MainState()
     switch action {
     case _ as MainActionIncreaseCount:
         state.count += 1

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ReSwiftConsumer
 
-class SubViewController: StateSharedViewController<MainPageState> {
+class SubViewController: StateSharedViewController<MainState> {
     
     @IBOutlet weak var countLabel: UILabel!
     
@@ -50,7 +50,7 @@ class SubViewController: StateSharedViewController<MainPageState> {
 }
 
 extension SubViewController: CreateStateSharedViaStoryboard {
-    typealias SharedState = MainPageState
+    typealias SharedState = MainState
     static var storyboardName: String { return "Main" }
     static var storyboardIdentity: String { return "SubViewController"}
 }

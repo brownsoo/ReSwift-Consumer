@@ -12,7 +12,7 @@
 		170DFE11206CBC8F002C5042 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170DFE0F206CBC8E002C5042 /* Main.storyboard */; };
 		171B6B451FF068D300BFF7A5 /* CreateStateShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B441FF068D300BFF7A5 /* CreateStateShared.swift */; };
 		171B6B471FF06D4700BFF7A5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B461FF06D4700BFF7A5 /* AppState.swift */; };
-		171B6B491FF06DE400BFF7A5 /* MainPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B481FF06DE400BFF7A5 /* MainPageState.swift */; };
+		171B6B491FF06DE400BFF7A5 /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B481FF06DE400BFF7A5 /* MainState.swift */; };
 		171B6B4B1FF0704700BFF7A5 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B4A1FF0704700BFF7A5 /* MainInteractor.swift */; };
 		171B6B4E1FF07D9100BFF7A5 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -30,7 +30,7 @@
 		170DFE0F206CBC8E002C5042 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		171B6B441FF068D300BFF7A5 /* CreateStateShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStateShared.swift; sourceTree = "<group>"; };
 		171B6B461FF06D4700BFF7A5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		171B6B481FF06DE400BFF7A5 /* MainPageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageState.swift; sourceTree = "<group>"; };
+		171B6B481FF06DE400BFF7A5 /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
 		171B6B4A1FF0704700BFF7A5 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		1E45768C0416C31940952BAE /* ReSwiftConsumer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ReSwiftConsumer.podspec; path = ../ReSwiftConsumer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -101,7 +101,7 @@
 				171B6B461FF06D4700BFF7A5 /* AppState.swift */,
 				171B6B441FF068D300BFF7A5 /* CreateStateShared.swift */,
 				171B6B4A1FF0704700BFF7A5 /* MainInteractor.swift */,
-				171B6B481FF06DE400BFF7A5 /* MainPageState.swift */,
+				171B6B481FF06DE400BFF7A5 /* MainState.swift */,
 				607FACD71AFB9204008FA782 /* MainViewController.swift */,
 				171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -195,9 +195,8 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = TB576F3KJ6;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -280,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				171B6B451FF068D300BFF7A5 /* CreateStateShared.swift in Sources */,
-				171B6B491FF06DE400BFF7A5 /* MainPageState.swift in Sources */,
+				171B6B491FF06DE400BFF7A5 /* MainState.swift in Sources */,
 				171B6B4E1FF07D9100BFF7A5 /* SubViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -396,10 +395,10 @@
 			baseConfigurationReference = AA85931C73AD7185C426434F /* Pods-ReSwiftConsumer-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = TB576F3KJ6;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReSwiftConsumer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -407,9 +406,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hansoolabs.ReSwiftConsumer-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "67cb9b24-4ddd-4ab6-abc8-aa9d750900b2";
-				PROVISIONING_PROFILE_SPECIFIER = "hansoolabs provision";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -419,9 +418,10 @@
 			baseConfigurationReference = 717CF34BF56789BB06FF41DE /* Pods-ReSwiftConsumer-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = TB576F3KJ6;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReSwiftConsumer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -429,9 +429,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hansoolabs.ReSwiftConsumer-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "67cb9b24-4ddd-4ab6-abc8-aa9d750900b2";
-				PROVISIONING_PROFILE_SPECIFIER = "hansoolabs provision";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
