@@ -6,7 +6,7 @@ target 'ReSwiftConsumer-iOS' do
   pod 'ReSwift'
   pod 'ReSwiftConsumer', :path => '../'
 
-  target 'ReSwiftConsumer-iOSTests' do
-    inherit! :search_paths
-  end
+#  target 'ReSwiftConsumer-iOSTests' do
+#    inherit! :search_paths
+#  end
 end
