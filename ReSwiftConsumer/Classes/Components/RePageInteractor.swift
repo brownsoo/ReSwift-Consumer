@@ -54,7 +54,7 @@ open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
     }
     
     public func newPageState(state: PS) {
-        self.pageConsumer.consume(newState: state)
+        pageConsumer.consume(newState: state)
     }
     
 }
