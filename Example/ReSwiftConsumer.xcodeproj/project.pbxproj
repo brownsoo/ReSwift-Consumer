@@ -18,6 +18,7 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* MainViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
+		6A769A3B42899E77E83BB47B /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177A122521AD145C007ED385 /* Pods_ReSwiftConsumer_iOS.framework */; };
 		A73BCEB31C699D5527513ED3 /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039387DD8C6AC65017C0AD71 /* Pods_ReSwiftConsumer_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,8 @@
 		171B6B481FF06DE400BFF7A5 /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
 		171B6B4A1FF0704700BFF7A5 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
+		177A122521AD145C007ED385 /* Pods_ReSwiftConsumer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ReSwiftConsumer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		177A122921AD1604007ED385 /* ReSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E45768C0416C31940952BAE /* ReSwiftConsumer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ReSwiftConsumer.podspec; path = ../ReSwiftConsumer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1EAE5023ABB076D18BDC0F25 /* Pods-ReSwiftConsumer-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReSwiftConsumer-iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReSwiftConsumer-iOSTests/Pods-ReSwiftConsumer-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2410F00D415BF4287D13150C /* Pods_ReSwiftConsumer_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReSwiftConsumer_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A73BCEB31C699D5527513ED3 /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */,
+				6A769A3B42899E77E83BB47B /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example for ReSwiftConsumer */,
+				607FACD21AFB9204008FA782 /* ReSwiftConsumerExample */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				D8FACCECD5D99CD97A7D2353 /* Pods */,
@@ -91,7 +95,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* Example for ReSwiftConsumer */ = {
+		607FACD21AFB9204008FA782 /* ReSwiftConsumerExample */ = {
 			isa = PBXGroup;
 			children = (
 				170DFE0E206CBC8E002C5042 /* LaunchScreen.xib */,
@@ -106,7 +110,7 @@
 				171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 			);
-			name = "Example for ReSwiftConsumer";
+			name = ReSwiftConsumerExample;
 			path = ReSwiftConsumer;
 			sourceTree = "<group>";
 		};
@@ -132,6 +136,8 @@
 		86A38B790B197EBEF05781D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				177A122921AD1604007ED385 /* ReSwift.framework */,
+				177A122521AD145C007ED385 /* Pods_ReSwiftConsumer_iOS.framework */,
 				AF91F21A81104C417EAEDD74 /* Pods_ReSwiftConsumer_Example.framework */,
 				7A0CDC48B7D77A9F1C07FF3D /* Pods_ReSwiftConsumer_Tests.framework */,
 				039387DD8C6AC65017C0AD71 /* Pods_ReSwiftConsumer_iOS.framework */,
@@ -189,7 +195,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = HansooLabs;
 				TargetAttributes = {

@@ -15,9 +15,9 @@ It include some components that can be used in ViewController level.
   s.social_media_url = 'https://twitter.com/hansoolabs'
 
   s.ios.deployment_target     = '10.3'
-#s.osx.deployment_target     = '10.10'
-#s.tvos.deployment_target    = '9.0'
-#s.watchos.deployment_target = '2.0'
+  #s.osx.deployment_target     = '10.10'
+  #s.tvos.deployment_target    = '9.0'
+  #s.watchos.deployment_target = '2.0'
 
   s.source_files = 'ReSwiftConsumer/Classes/**/*.swift'
   

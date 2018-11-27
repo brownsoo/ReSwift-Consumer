@@ -2,10 +2,13 @@ platform :ios, '10.3'
 use_frameworks!
 workspace 'ReSwiftConsumer'
 
-target 'ReSwiftConsumer-iOS' do
-  pod 'ReSwift'
-  pod 'ReSwiftConsumer', :path => '../'
+def common_pods
+    pod 'ReSwift'
+    pod 'ReSwiftConsumer', :path => '../'
+end
 
+target 'ReSwiftConsumer-iOS' do
+  common_pods
 #  target 'ReSwiftConsumer-iOSTests' do
 #    inherit! :search_paths
 #  end
