@@ -15,19 +15,20 @@ open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
     public typealias PageStoreSubscriberStateType = PS
     public typealias PageStoreInteractStateType = PS
     
-    open var pageStore:Store<PS>? { return _pageStore }
-    open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS>? = RePageStoreSubscriber(subscriber: self)
-    public let pageConsumer = StateConsumer<PS>()
-    
-    private var _pageStore: Store<PS>?
-    
-    public required init() {
+    open lazy var pageStore:Store<PS> = {
         var middleWare = Array<Middleware<PS>>()
         middleWare.append(contentsOf: getPageMiddleWares())
-        _pageStore = Store<PS>(
+        let store = Store<PS>(
             reducer: getPageReducer(),
             state: getPageInitialState(),
             middleware: middleWare)
+        return store
+    }()
+    open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS>? = RePageStoreSubscriber(subscriber: self)
+    public let pageConsumer = StateConsumer<PS>()
+    private var _pageStore: Store<PS>?
+
+    required public init() {
     }
     
     open func getPageReducer() -> Reducer<PS> {
@@ -43,13 +44,13 @@ open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
     }
     
     open func bindState() {
-        pageStore?.subscribe(pageStoreSubscriber!)
+        pageStore.subscribe(pageStoreSubscriber!)
     }
     
     open func unbindState() {
         pageConsumer.removeAll()
         if pageStoreSubscriber != nil {
-            pageStore?.unsubscribe(pageStoreSubscriber!)
+            pageStore.unsubscribe(pageStoreSubscriber!)
         }
     }
     
