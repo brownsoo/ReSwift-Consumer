@@ -14,7 +14,11 @@ class MainViewController: StateViewController<MainState> {
     @IBOutlet weak var countLb: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var btn: UIButton!
-    
+
+    private var interactor: MainInteractor? {
+        return pageInteractor as? MainInteractor
+    }
+
     private var activeController: UIViewController? {
         didSet {
             removeSubController(inactiveVc: oldValue)
@@ -51,7 +55,8 @@ class MainViewController: StateViewController<MainState> {
         if let _ = activeController {
             activeController = nil
         } else {
-            let controller = SubViewController.newStateSharedInstance(store: pageStore!, consumer: pageConsumer!)
+            let controller = SubViewController.newStateSharedInstance(store: pageStore) as! SubViewController
+            interactor?.addSharedConsumer(controller.pageConsumer)
             activeController = controller
         }
     }

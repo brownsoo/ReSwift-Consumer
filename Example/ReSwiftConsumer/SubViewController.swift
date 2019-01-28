@@ -13,27 +13,22 @@ import ReSwiftConsumer
 class SubViewController: StateSharedViewController<MainState> {
     
     @IBOutlet weak var countLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.yellow
-        
+        pageConsumer.consumeInstantly = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Add new consumer created instantly
-        consumerBag?.add(sharedConsumer?.add({state in state?.count}, onCountChanged))
-        // this not required because the property 'consumeInstantly' of sharedConsumer is true
-//        if let count = sharedStore?.state.count {
-//            onCountChanged(prev: nil, curr: count)
-//        }
+        pageConsumer.add({state in state?.count}, onCountChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // Remove all consumers used only in this ViewController
-        consumerBag?.removeAll()
+        pageConsumer.removeAll()
     }
     
     @IBAction func onClickPlus(_ sender: UIButton) {

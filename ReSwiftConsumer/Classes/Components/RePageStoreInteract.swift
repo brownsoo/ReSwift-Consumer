@@ -12,7 +12,7 @@ public protocol RePageStoreInteract {
     associatedtype PageStoreInteractStateType: StateType
     
     var pageStore: Store<PageStoreInteractStateType> { get }
-    var pageStoreSubscriber: RePageStoreSubscriber<PageStoreInteractStateType>? { get }
+    var pageStoreSubscriber: RePageStoreSubscriber<PageStoreInteractStateType> { get }
     var pageConsumer: StateConsumer<PageStoreInteractStateType> { get }
     
     func bindState()

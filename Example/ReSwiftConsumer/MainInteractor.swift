@@ -15,7 +15,7 @@ class MainInteractor: RePageInteractor<MainState>, StoreSubscriber {
     typealias StoreSubscriberStateType = AppState
     
     let appConsumer = StateConsumer<AppState>()
-    
+
     override func getPageReducer() -> (Action, MainState?) -> MainState {
         return mainReducer
     }
@@ -49,12 +49,14 @@ class MainInteractor: RePageInteractor<MainState>, StoreSubscriber {
         appConsumer.removeAll()
         appStore.unsubscribe(self)
     }
-    
+
+    // ReSwift StoreSubscriber implements
     func newState(state: AppState) {
         appConsumer.consume(newState: state)
     }
-    
-    
+
+    // MARK: consumer callbacks
+
     private func onForegroundChanged(curr: Bool) {
         print("MainInteractor-  foreground \(curr)")
     }

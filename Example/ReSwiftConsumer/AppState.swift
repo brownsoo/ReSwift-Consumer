@@ -16,12 +16,8 @@ struct AppState: StateType, Equatable {
     }
 }
 
-
-
 protocol AppAction: Action {}
 struct AppActionSetForeground: AppAction { let foreground: Bool }
-
-
 
 func appReducer(action: Action, state: AppState?) -> AppState {
     var state = state ?? AppState()

@@ -24,8 +24,13 @@ open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
             middleware: middleWare)
         return store
     }()
-    open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS>? = RePageStoreSubscriber(subscriber: self)
-    public let pageConsumer = StateConsumer<PS>()
+
+    open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS> = RePageStoreSubscriber(subscriber: self)
+
+    open lazy var pageConsumer = StateConsumer<PS>()
+
+    public var sharedConsumers = Set<StateConsumer<PS>>()
+
     private var _pageStore: Store<PS>?
 
     required public init() {
@@ -44,19 +49,31 @@ open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
     }
     
     open func bindState() {
-        pageStore.subscribe(pageStoreSubscriber!)
+        pageStore.subscribe(pageStoreSubscriber)
     }
     
     open func unbindState() {
-        pageConsumer.removeAll()
-        if pageStoreSubscriber != nil {
-            pageStore.unsubscribe(pageStoreSubscriber!)
+        pageStore.unsubscribe(pageStoreSubscriber)
+        for consumer in sharedConsumers {
+            consumer.removeAll()
         }
+        sharedConsumers.removeAll()
+        pageConsumer.removeAll()
     }
     
-    public func newPageState(state: PS) {
+    open func newPageState(state: PS) {
+        for consumer in sharedConsumers {
+            consumer.consume(newState: state)
+        }
         pageConsumer.consume(newState: state)
     }
-    
+
+    public func addSharedConsumer(_ consumer: StateConsumer<PS>) {
+        sharedConsumers.insert(consumer)
+    }
+
+    public func removeSharedConsumer(_ consumer: StateConsumer<PS>) {
+        sharedConsumers.remove(consumer)
+    }
 }
 
