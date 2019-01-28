@@ -15,5 +15,5 @@ public protocol StateShared {
     
     var sharedStore: Store<StateSharedType>? { get }
     var sharedConsumer: StateConsumer<StateSharedType>? { get }
-    func bind(store: Store<StateSharedType>, consumer: StateConsumer<StateSharedType>)
+    func bind(store: Store<StateSharedType>?, consumer: StateConsumer<StateSharedType>?)
 }

@@ -23,7 +23,7 @@ open class StateSharedViewController<State>: UIViewController, StateShared
         return ConsumerBag<State>(sharedConsumer)
     }()
     
-    open func bind(store: Store<State>, consumer: StateConsumer<State>) {
+    open func bind(store: Store<State>?, consumer: StateConsumer<State>?) {
         self.sharedStore = store
         self.sharedConsumer = consumer
     }
