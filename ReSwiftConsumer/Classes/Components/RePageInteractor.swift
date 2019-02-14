@@ -66,6 +66,9 @@ open class RePageInteractor<PS: StateType> : PageStoreSubscriber {
 
     public func addSharedConsumer(_ consumer: StateConsumer<PS>) {
         sharedConsumers.insert(consumer)
+        if consumer.consumeInstantly, let ps = pageStore.state {
+            consumer.consume(newState: ps)
+        }
     }
 
     public func removeSharedConsumer(_ consumer: StateConsumer<PS>) {
