@@ -34,4 +34,8 @@ open class StateSharedViewController<State>: UIViewController
     open func bind(store: Store<State>?) {
         self.sharedStore = store
     }
+
+    deinit {
+        sharedStore = nil
+    }
 }
