@@ -27,8 +27,8 @@ open class StateViewController<ReState> : UIViewController where ReState: StateT
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         pageInteractor?.unbindState()
+        super.viewWillDisappear(animated)
     }
 }
 

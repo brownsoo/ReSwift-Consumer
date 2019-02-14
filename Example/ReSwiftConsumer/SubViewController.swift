@@ -14,6 +14,8 @@ class SubViewController: StateSharedViewController<MainState> {
     
     @IBOutlet weak var countLabel: UILabel!
 
+    let pageConsumer = StateConsumer<MainState>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.yellow
