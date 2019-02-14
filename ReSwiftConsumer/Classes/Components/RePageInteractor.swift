@@ -9,11 +9,9 @@
 import Foundation
 import ReSwift
 
-open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
-    RePageStoreInteract {
+open class RePageInteractor<PS: StateType> : PageStoreSubscriber {
     
     public typealias PageStoreSubscriberStateType = PS
-    public typealias PageStoreInteractStateType = PS
     
     open lazy var pageStore:Store<PS> = {
         var middleWare = Array<Middleware<PS>>()
@@ -30,8 +28,6 @@ open class RePageInteractor<PS: StateType>: PageStoreSubscriber,
     open lazy var pageConsumer = StateConsumer<PS>()
 
     public var sharedConsumers = Set<StateConsumer<PS>>()
-
-    private var _pageStore: Store<PS>?
 
     required public init() {
     }
