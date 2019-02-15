@@ -21,14 +21,15 @@ open class StateViewController<ReState> : UIViewController where ReState: StateT
         return pageInteractor?.pageConsumer
     }
 
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        // make subsrcription on PageStore
         pageInteractor?.bindState()
     }
-    
-    override open func viewWillDisappear(_ animated: Bool) {
+
+    deinit {
+        // unsubscription on PageStore
         pageInteractor?.unbindState()
-        super.viewWillDisappear(animated)
     }
 }
 

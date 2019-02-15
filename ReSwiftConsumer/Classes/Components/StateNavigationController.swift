@@ -20,14 +20,15 @@ open class StateNavigationController<ReState>: UINavigationController where ReSt
     open var pageConsumer: StateConsumer<ReState>? {
         return pageInteractor?.pageConsumer
     }
-    
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        // make subsrcription on PageStore
         pageInteractor?.bindState()
     }
-    
-    override open func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+
+    deinit {
+        // unsubscription on PageStore
         pageInteractor?.unbindState()
     }
 }
