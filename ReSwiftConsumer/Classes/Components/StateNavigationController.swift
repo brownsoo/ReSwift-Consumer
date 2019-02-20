@@ -23,7 +23,7 @@ open class StateNavigationController<ReState>: UINavigationController where ReSt
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        // make subsrcription on PageStore
+        // makes subscription on PageStore
         pageInteractor?.bindState()
     }
 
