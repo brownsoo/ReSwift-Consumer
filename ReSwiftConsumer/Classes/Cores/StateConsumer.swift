@@ -65,6 +65,17 @@ public class StateConsumer<S>: TypedConsumer<S> {
                                   _ consumer: @escaping (S?, T?) -> Void) -> TypedConsumer<S> {
         return add(SelectiveConsumer(selector, { state, _, new in consumer(state, new) }))
     }
+
+    /// add consumer for a state and a new value
+    @discardableResult
+    public func add<T: Equatable>(_ selector: @escaping (S?) -> T?,
+                                  _ consumer: @escaping (S?, T) -> Void) -> TypedConsumer<S> {
+        return add(SelectiveConsumer(selector, { state, _, new in
+            if new != nil {
+                consumer(state, new!)
+            }
+        }))
+    }
     
     /// add consumer for a new nullable value
     @discardableResult
