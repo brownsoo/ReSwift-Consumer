@@ -23,7 +23,7 @@ open class StateViewController<ReState> : UIViewController where ReState: StateT
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        // make subsrcription on PageStore
+        // make subscription on PageStore
         pageInteractor?.bindState()
     }
 
