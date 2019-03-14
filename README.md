@@ -38,7 +38,7 @@ struct AppState: StateType {
     var name: String? = nil
     var works: [String] = []
 }
-let mainStore = Store<AppState>(reducer: reducer, state: nil)
+let appStore = Store<AppState>(reducer: reducer, state: nil)
 
 class CounterViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = AppState
@@ -50,7 +50,7 @@ class CounterViewController: UIViewController, StoreSubscriber {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mainStore.subscribe(self)
+        appStore.subscribe(self)
         
         // add consumer of property selectively
         consumer.add({state in state.counter}, onCounterChanged)
@@ -58,7 +58,7 @@ class CounterViewController: UIViewController, StoreSubscriber {
         consumer.add({state in state.works}, onWorksChanged)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        mainStore.unsubscribe(self)
+        appStore.unsubscribe(self)
         // remove all consumers
         consumer.removeAll()
         super.viewWillDisappear(animated)
@@ -91,7 +91,7 @@ class CounterViewController: UIViewController, StoreSubscriber {
 
 ## 분리된 저장소
 
-### PageStoreSubscriber
+### PageStoreSubscriber (additional)
 
 독립적인 저장소의 구독자를 새로 만들었습니다.
 
@@ -146,10 +146,7 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
         pageStore = Store<MainState>(reducer: mainReducer,
                                     state: nil,
                                     middleware: [])
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         // bind AppState
         appStore.subscribe(self)
         appConsumer.add({state in state?.foreground},  onForegroundChanged)
@@ -158,7 +155,7 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
         pageConsumer?.add({state in state?.count}, onCountChanged)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    deinit {
         // unbinding appStore, its consumer
         appConsumer.removeAll()
         appStore.unsubscribe(self)
@@ -167,7 +164,6 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
         if pageStoreSubscriber != nil {
             pageStore?.unsubscribe(pageStoreSubscriber!)
         }
-        super.viewWillDisappear(animated)
     }
 
     func newState(state: AppState) {
@@ -191,7 +187,7 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
 ```
 
 
-## Components
+## Components (additional)
 
 이 라이브러리에는 ViewController 단에서 바로 사용할 수 있는 다음과 같은 콤포넌트를 포함하고 있습니다. 위 예제에서 작성되는 반복적인 작업을 쉽게 활용할 수 있는 형태로 만든 것입니다.
 
@@ -203,9 +199,16 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
 
 * StateSharedViewController : 뷰 컨트롤러 안에 다른 뷰 컨트롤러를 포함시켜 화면을 구성할 경우, 부모 뷰컨트롤러(StateViewController)와 State와 Store를 공유하기 위해 제공합니다.
 
-* ConsumberBag: StateConsumer에 Consumer 들을 선택적으로 모으고 한꺼번에 제거하고자 할 때 사용합니다. 특히, StateSharedViewController 가 사라질 때 자신이 등록한 Consumer 들을 제거하고자 할 때 유용합니다.
+* ConsumberBag: StateConsumer에 Consumer 들을 선택적으로 모으고 한꺼번에 제거하고자 할 때 사용합니다.
+
+
+
 
 *작성 중...*
+
+
+
+
 
 ## Example
 
