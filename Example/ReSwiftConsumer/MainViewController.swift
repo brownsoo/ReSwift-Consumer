@@ -32,8 +32,8 @@ class MainViewController: StateViewController<MainState> {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         pageInteractor = MainInteractor()
+        super.viewDidLoad() // Made subscription at this time in StateViewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
