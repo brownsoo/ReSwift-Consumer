@@ -14,11 +14,13 @@ public protocol AnyPageStoreSubscriber: class {
 
 public protocol PageStoreSubscriber: AnyPageStoreSubscriber {
     associatedtype PageStoreSubscriberStateType
+
     func newPageState(state: PageStoreSubscriberStateType)
 }
 
 public extension PageStoreSubscriber {
-    public func _newAnyState(state: Any) {
+    
+    func _newAnyState(state: Any) {
         if let typedState = state as? PageStoreSubscriberStateType {
             newPageState(state: typedState)
         }
