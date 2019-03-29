@@ -16,10 +16,25 @@ public protocol Consumer {
 open class TypedConsumer<S>: Consumer, Hashable {
     public typealias State = S
     private lazy var objectIdentifier = ObjectIdentifier(self)
-
+    #if swift(>=5.0)
     public func hash(into hasher: inout Hasher) {
         hasher.combine(objectIdentifier)
     }
+    #elseif swift(>=4.2)
+        #if compiler(>=5.0)
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(objectIdentifier)
+        }
+        #else
+        var hashValue: Int {
+            return self.objectIdentifier.hashValue
+        }
+        #endif
+    #else
+        var hashValue: Int {
+            return self.objectIdentifier.hashValue
+        }
+    #endif
 
     open func consume(old: S?, new: S?) {
     }
