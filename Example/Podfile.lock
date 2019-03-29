@@ -1,6 +1,6 @@
 PODS:
-  - ReSwift (4.0.1)
-  - ReSwiftConsumer (0.4.1):
+  - ReSwift (4.1.1)
+  - ReSwiftConsumer (0.6.2):
     - ReSwift
 
 DEPENDENCIES:
@@ -16,9 +16,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
-  ReSwiftConsumer: de18cd489d3815470d4396e3283c966da5a3581e
+  ReSwift: d925be0033558f55bd73d92869961230dfe19d52
+  ReSwiftConsumer: bb053cc90915110509bf36998890b1f80d991fdb
 
 PODFILE CHECKSUM: 142846ac3bb7602663ad13726a21285752ee4b8e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0
