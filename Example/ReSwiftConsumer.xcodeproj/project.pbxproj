@@ -18,8 +18,7 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* MainViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
-		6A769A3B42899E77E83BB47B /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177A122521AD145C007ED385 /* Pods_ReSwiftConsumer_iOS.framework */; };
-		A73BCEB31C699D5527513ED3 /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039387DD8C6AC65017C0AD71 /* Pods_ReSwiftConsumer_iOS.framework */; };
+		CC6B92E475FCFC7F86B8CE83 /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177A122521AD145C007ED385 /* Pods_ReSwiftConsumer_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,8 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A73BCEB31C699D5527513ED3 /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */,
-				6A769A3B42899E77E83BB47B /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */,
+				CC6B92E475FCFC7F86B8CE83 /* Pods_ReSwiftConsumer_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,14 +199,14 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 					};
 				};
 			};
 			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "ReSwiftConsumer" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -263,7 +261,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReSwiftConsumer-iOS/Pods-ReSwiftConsumer-iOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ReSwiftConsumer-iOS/Pods-ReSwiftConsumer-iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwiftConsumer/ReSwiftConsumer.framework",
 			);
@@ -274,7 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReSwiftConsumer-iOS/Pods-ReSwiftConsumer-iOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReSwiftConsumer-iOS/Pods-ReSwiftConsumer-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,8 +414,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "67cb9b24-4ddd-4ab6-abc8-aa9d750900b2";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -438,8 +435,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "67cb9b24-4ddd-4ab6-abc8-aa9d750900b2";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
