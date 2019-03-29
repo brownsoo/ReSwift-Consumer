@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ReSwiftConsumer'
-  s.version          = '0.6.2'
+  s.version          = '0.7.0'
   s.summary          = 'With ReSwiftConsumer you can consume segmented property changes of state.'
   s.description      = <<-DESC
 With ReSwift Consumer, we can observe the property changes interested using Property selector.
