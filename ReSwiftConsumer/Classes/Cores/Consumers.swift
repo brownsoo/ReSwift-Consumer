@@ -16,10 +16,11 @@ public protocol Consumer {
 open class TypedConsumer<S>: Consumer, Hashable {
     public typealias State = S
     private lazy var objectIdentifier = ObjectIdentifier(self)
-    public var hashValue: Int {
-        return self.objectIdentifier.hashValue
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(objectIdentifier)
     }
-    
+
     open func consume(old: S?, new: S?) {
     }
     
