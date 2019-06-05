@@ -11,15 +11,13 @@ import UIKit
 import ReSwift
 
 open class StateViewController<ReState> : UIViewController where ReState: StateType & Equatable {
-    
+
     open var pageInteractor: RePageInteractor<ReState>?
     
     open var pageStore: Store<ReState>? {
-        return pageInteractor?.pageStore ?? nil
+        return pageInteractor?.pageStore
     }
-    open var pageConsumer: StateConsumer<ReState>? {
-        return pageInteractor?.pageConsumer
-    }
+    public let pageConsumer: StateConsumer<ReState> = StateConsumer<ReState>()
 
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +28,16 @@ open class StateViewController<ReState> : UIViewController where ReState: StateT
     deinit {
         // unsubscription on PageStore
         pageInteractor?.unbindState()
+    }
+
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pageInteractor?.addSharedConsumer(pageConsumer)
+    }
+
+    open override func viewWillDisappear(_ animated: Bool) {
+        pageInteractor?.removeSharedConsumer(pageConsumer)
+        super.viewWillDisappear(animated)
     }
 }
 
