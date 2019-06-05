@@ -25,6 +25,7 @@ open class RePageInteractor<PS: StateType> : PageStoreSubscriber {
 
     open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS> = RePageStoreSubscriber(subscriber: self)
 
+    @available(*, deprecated: 0.8.0, message: "Use sharedConsumers instead.")
     open lazy var pageConsumer = StateConsumer<PS>()
 
     public var sharedConsumers = Set<StateConsumer<PS>>()
