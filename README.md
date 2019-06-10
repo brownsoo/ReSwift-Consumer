@@ -1,7 +1,7 @@
 # ReSwiftConsumer
 
-## 지금은 정리 중입니다. 
-간단한 예제(Example)를 통해 손흥민같이 빠르게 파악할 수 있을 겁니다. NOW COLLECTING ... Yon can  know how this works with ReSwift state by Example project.
+## 지금은 정리 중입니다. (Now Developing)
+간단한 예제(Example 프로젝트)를 통해 손흥민같이 빠르게 파악할 수 있을 겁니다. NOW COLLECTING ... Yon can  know how this works with ReSwift state by Example project.
 
 > With ReSwiftConsumer you can consume only the property changes of state in interesting. And you can have seperated store from global one state.
 
@@ -89,9 +89,9 @@ class CounterViewController: UIViewController, StoreSubscriber {
 
 *`StateConsumer`에 대한 성능 실험은 진행되지 않았습니다. 그럼에도 `StateConsumer`는 내부에 상태 인스턴스를 포함하고 있기 때문에 덩치 큰 State를 다룰 경우 메모리나 속도 문제가 있을 것은 분명합니다. 상태 구조를 잘 설계하고 분절해서 사용해야 합니다. 이런 문제를 조금 해결해보고자 독립된 저장소를 만들었습니다. 아래에서 확인할 수 있습니다.*
 
-## 분리된 저장소
+## 분리된 저장소 (additional)
 
-### PageStoreSubscriber (additional)
+### PageStoreSubscriber
 
 독립적인 저장소의 구독자를 새로 만들었습니다.
 
@@ -193,11 +193,9 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
 
 * RePageInteractor : `PageStoreSubscriber` 를 바로 사용할 수 있도록 구현해놓은 것으로, `ReSwift`에서 제공하는 `StoreSubscriber`와 다른 Store와 Middleware를 갖고 있습니다.
 
-* StateViewController : `RePageInteractor` 와 연결되어 동작할 수 있는 기본 뷰 컨트롤러입니다. 독립된 Store와 RePageInteractor 에서 취하는 State를 구독하거나 해제하는 동작을 합니다.
+* StateViewController, StateNavigationController : `RePageInteractor` 와 연결되어 동작할 수 있는 기본 뷰 컨트롤러입니다. 독립된 Store와 RePageInteractor 에서 취하는 State를 구독하거나 해제하는 동작을 합니다.
 
-* StateNavigationController : StateViewController 와 동일한 동작을 합니다.
-
-* StateSharedViewController : 뷰 컨트롤러 안에 다른 뷰 컨트롤러를 포함시켜 화면을 구성할 경우, 부모 뷰컨트롤러(StateViewController)와 State와 Store를 공유하기 위해 제공합니다.
+* --StateSharedViewController-- : 뷰 컨트롤러 안에 다른 뷰 컨트롤러를 포함시켜 화면을 구성할 경우, 부모 뷰컨트롤러(StateViewController)와 State와 Store를 공유하기 위해 제공합니다.
 
 * ConsumberBag: StateConsumer에 Consumer 들을 선택적으로 모으고 한꺼번에 제거하고자 할 때 사용합니다.
 
