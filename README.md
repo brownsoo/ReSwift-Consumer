@@ -195,17 +195,7 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
 
 * StateViewController, StateNavigationController : `RePageInteractor` 와 연결되어 동작할 수 있는 기본 뷰 컨트롤러입니다. 독립된 Store와 RePageInteractor 에서 취하는 State를 구독하거나 해제하는 동작을 합니다.
 
-* --StateSharedViewController-- : 뷰 컨트롤러 안에 다른 뷰 컨트롤러를 포함시켜 화면을 구성할 경우, 부모 뷰컨트롤러(StateViewController)와 State와 Store를 공유하기 위해 제공합니다.
-
 * ConsumberBag: StateConsumer에 Consumer 들을 선택적으로 모으고 한꺼번에 제거하고자 할 때 사용합니다.
-
-
-
-
-*작성 중...*
-
-
-
 
 
 ## Example
@@ -213,8 +203,6 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 샘플 앱의 코드를 확인해보세요.
-
-## Requirements
 
 ## Installation
 
@@ -228,7 +216,7 @@ pod 'ReSwiftConsumer'
 
 ## Author
 
-brownsoo, [@hansoo.labs](https://twitter.com/hansoolabs)
+brownsoo, [@hansoo.labs](https://twitter.com/hansoolabs), [hansoo.labs](https://blog.hansoolabs.com)
 
 ## License
 
