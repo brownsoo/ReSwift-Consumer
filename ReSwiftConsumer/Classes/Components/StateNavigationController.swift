@@ -29,7 +29,10 @@ open class StateNavigationController<ReState>: UINavigationController where ReSt
 
     deinit {
         // unsubscription on PageStore
-        pageInteractor?.unbindState()
+        if let interactor = pageInteractor, interactor.sharedConsumers.isEmpty {
+            interactor.unbindState()
+        }
+        self.pageInteractor = nil
     }
 
     open override func viewWillAppear(_ animated: Bool) {

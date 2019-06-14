@@ -62,13 +62,6 @@ open class RePageInteractor<PS: StateType> : NSObject, PageStoreSubscriber {
 
     public func addSharedConsumer(_ consumer: StateConsumer<PS>) {
         sharedConsumers.update(with: consumer)
-        #if DEBUG
-        print("------adding \(consumer.hashValue)")
-        print("------addSharedConsumer remained \(sharedConsumers.count)   -- \(self)")
-        for consumer in sharedConsumers {
-            print("item hash \(consumer.hashValue)")
-        }
-        #endif
         if consumer.consumeInstantly {
             consumer.consume(newState: pageStore.state)
         }
@@ -76,13 +69,6 @@ open class RePageInteractor<PS: StateType> : NSObject, PageStoreSubscriber {
 
     public func removeSharedConsumer(_ consumer: StateConsumer<PS>) {
         sharedConsumers.remove(consumer)
-        #if DEBUG
-        print("------removing \(consumer.hashValue)")
-        print("------removeSharedConsumer remained \(sharedConsumers.count)   -- \(self)")
-        for consumer in sharedConsumers {
-            print("item hash \(consumer.hashValue)")
-        }
-        #endif
     }
 }
 

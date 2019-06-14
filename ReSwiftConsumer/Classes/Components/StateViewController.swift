@@ -23,9 +23,6 @@ open class StateViewController<ReState> : UIViewController where ReState: StateT
         super.viewDidLoad()
         // make subscription on PageStore
         DispatchQueue.main.async {
-            #if DEBUG
-            print("bindState ----  \(String(describing: self))")
-            #endif
             self.pageInteractor?.bindState()
         }
     }
