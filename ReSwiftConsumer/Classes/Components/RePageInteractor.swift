@@ -25,9 +25,6 @@ open class RePageInteractor<PS: StateType> : NSObject, PageStoreSubscriber {
 
     open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS> = RePageStoreSubscriber(subscriber: self)
 
-    @available(*, deprecated, message: "Use sharedConsumers instead.")
-    open lazy var pageConsumer = StateConsumer<PS>()
-
     public var sharedConsumers = Set<StateConsumer<PS>>()
 
     required public override init() {
@@ -55,14 +52,12 @@ open class RePageInteractor<PS: StateType> : NSObject, PageStoreSubscriber {
             consumer.removeAll()
         }
         sharedConsumers.removeAll()
-        pageConsumer.removeAll()
     }
     
     open func newPageState(state: PS) {
         for consumer in sharedConsumers {
             consumer.consume(newState: state)
         }
-        pageConsumer.consume(newState: state)
     }
 
     public func addSharedConsumer(_ consumer: StateConsumer<PS>) {

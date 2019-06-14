@@ -28,4 +28,6 @@ It include some components that can be used in ViewController level.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
   s.dependency 'ReSwift'
+
+  s.swift_versions = ['4.0', '4.2', '5.0']
 end
