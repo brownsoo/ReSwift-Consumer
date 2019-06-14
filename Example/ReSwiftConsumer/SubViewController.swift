@@ -10,21 +10,18 @@ import Foundation
 import UIKit
 import ReSwiftConsumer
 
-class SubViewController: StateSharedViewController<MainState> {
+class SubViewController: StateViewController<MainState> {
     
     @IBOutlet weak var countLabel: UILabel!
-
-    let pageConsumer = StateConsumer<MainState>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.yellow
-        pageConsumer.consumeInstantly = true
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Add new consumer created instantly
+        pageConsumer.consumeInstantly = true
         pageConsumer.add({state in state?.count}, onCountChanged)
     }
     
@@ -34,11 +31,11 @@ class SubViewController: StateSharedViewController<MainState> {
     }
     
     @IBAction func onClickPlus(_ sender: UIButton) {
-        sharedStore?.dispatch(MainActionIncreaseCount())
+        pageStore?.dispatch(MainActionIncreaseCount())
     }
     
     @IBAction func onClickMinus(_ sender: UIButton) {
-        sharedStore?.dispatch(MainActionDecreaseCount())
+        pageStore?.dispatch(MainActionDecreaseCount())
     }
     
     private func onCountChanged(prev: Int?, curr: Int) {
@@ -46,8 +43,7 @@ class SubViewController: StateSharedViewController<MainState> {
     }
 }
 
-extension SubViewController: CreateStateSharedViaStoryboard {
-    typealias SharedState = MainState
+extension SubViewController: CreateViaStoryboard {
     static var storyboardName: String { return "Main" }
     static var storyboardIdentity: String { return "SubViewController"}
 }

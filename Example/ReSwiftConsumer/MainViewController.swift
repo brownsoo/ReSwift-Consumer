@@ -18,7 +18,6 @@ class MainViewController: StateViewController<MainState> {
     private var interactor: MainInteractor? {
         return pageInteractor as? MainInteractor
     }
-
     private var activeController: UIViewController? {
         didSet {
             removeSubController(inactiveVc: oldValue)
@@ -32,14 +31,14 @@ class MainViewController: StateViewController<MainState> {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad() // At this,asynchronous subscription made in StateViewController
         pageInteractor = MainInteractor()
-        super.viewDidLoad() // Made subscription at this time in StateViewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        pageConsumer?.consumeInstantly = true
-        pageConsumer?.add({state in state?.count}, onCountChanged)
+        pageConsumer.consumeInstantly = true
+        pageConsumer.add({state in state?.count}, onCountChanged)
     }
     
     @IBAction func onClickPlus(_ sender: UIButton) {
@@ -55,9 +54,10 @@ class MainViewController: StateViewController<MainState> {
         if let _ = activeController {
             activeController = nil
         } else {
-            let controller = SubViewController.newStateSharedInstance(store: pageStore) as! SubViewController
-            interactor?.addSharedConsumer(controller.pageConsumer)
-            activeController = controller
+            let vc: SubViewController = SubViewController.newInstance()
+            print("assign pageInteractor \(String(describing: pageInteractor.debugDescription))")
+            vc.pageInteractor = self.pageInteractor
+            activeController = vc
         }
     }
     
@@ -84,6 +84,7 @@ class MainViewController: StateViewController<MainState> {
     
     
     private func onCountChanged(prev: Int?, curr: Int) {
+        print("Main - onCountChanged")
         countLb.text = "count: \(curr)"
     }
     
