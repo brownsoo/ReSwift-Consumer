@@ -17,17 +17,25 @@ open class StateViewController<ReState> : UIViewController where ReState: StateT
     open var pageStore: Store<ReState>? {
         return pageInteractor?.pageStore
     }
-    public let pageConsumer: StateConsumer<ReState> = StateConsumer<ReState>()
+    open var pageConsumer: StateConsumer<ReState> = StateConsumer<ReState>()
 
     open override func viewDidLoad() {
         super.viewDidLoad()
         // make subscription on PageStore
-        pageInteractor?.bindState()
+        DispatchQueue.main.async {
+            #if DEBUG
+            print("bindState ----  \(String(describing: self))")
+            #endif
+            self.pageInteractor?.bindState()
+        }
     }
 
     deinit {
         // unsubscription on PageStore
-        pageInteractor?.unbindState()
+        if let interactor = pageInteractor, interactor.sharedConsumers.isEmpty {
+             interactor.unbindState()
+        }
+        self.pageInteractor = nil
     }
 
     open override func viewWillAppear(_ animated: Bool) {

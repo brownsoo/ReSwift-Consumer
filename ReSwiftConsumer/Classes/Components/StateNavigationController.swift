@@ -22,7 +22,9 @@ open class StateNavigationController<ReState>: UINavigationController where ReSt
     open override func viewDidLoad() {
         super.viewDidLoad()
         // makes subscription on PageStore
-        pageInteractor?.bindState()
+        DispatchQueue.main.async {
+            self.pageInteractor?.bindState()
+        }
     }
 
     deinit {

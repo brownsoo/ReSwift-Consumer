@@ -9,7 +9,7 @@
 import ReSwift
 import UIKit
 
-@available(*, deprecated: 0.8.0, message: "Use own custom VC")
+@available(*, deprecated, message: "Use own custom VC")
 open class StateSharedViewController<State>: UIViewController
     where State: Equatable & StateType {
 

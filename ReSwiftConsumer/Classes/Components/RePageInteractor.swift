@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-open class RePageInteractor<PS: StateType> : PageStoreSubscriber {
+open class RePageInteractor<PS: StateType> : NSObject, PageStoreSubscriber {
     
     public typealias PageStoreSubscriberStateType = PS
     
@@ -25,12 +25,12 @@ open class RePageInteractor<PS: StateType> : PageStoreSubscriber {
 
     open lazy var pageStoreSubscriber: RePageStoreSubscriber<PS> = RePageStoreSubscriber(subscriber: self)
 
-    @available(*, deprecated: 0.8.0, message: "Use sharedConsumers instead.")
+    @available(*, deprecated, message: "Use sharedConsumers instead.")
     open lazy var pageConsumer = StateConsumer<PS>()
 
     public var sharedConsumers = Set<StateConsumer<PS>>()
 
-    required public init() {
+    required public override init() {
     }
     
     open func getPageReducer() -> Reducer<PS> {
@@ -67,6 +67,13 @@ open class RePageInteractor<PS: StateType> : PageStoreSubscriber {
 
     public func addSharedConsumer(_ consumer: StateConsumer<PS>) {
         sharedConsumers.update(with: consumer)
+        #if DEBUG
+        print("------adding \(consumer.hashValue)")
+        print("------addSharedConsumer remained \(sharedConsumers.count)   -- \(self)")
+        for consumer in sharedConsumers {
+            print("item hash \(consumer.hashValue)")
+        }
+        #endif
         if consumer.consumeInstantly {
             consumer.consume(newState: pageStore.state)
         }
@@ -74,6 +81,13 @@ open class RePageInteractor<PS: StateType> : PageStoreSubscriber {
 
     public func removeSharedConsumer(_ consumer: StateConsumer<PS>) {
         sharedConsumers.remove(consumer)
+        #if DEBUG
+        print("------removing \(consumer.hashValue)")
+        print("------removeSharedConsumer remained \(sharedConsumers.count)   -- \(self)")
+        for consumer in sharedConsumers {
+            print("item hash \(consumer.hashValue)")
+        }
+        #endif
     }
 }
 
