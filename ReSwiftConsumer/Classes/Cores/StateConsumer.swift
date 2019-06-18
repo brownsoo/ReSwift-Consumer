@@ -22,16 +22,16 @@ public class StateConsumer<S>: TypedConsumer<S> {
     
     public override init() {
     }
-    
+
     public init(initialState: S? = nil) {
         self.previousState = initialState
     }
     
-    public func consume(newState: S) {
+    public override func consume(new: S?) {
         consumers.forEach { con in
-            con.consume(old: previousState, new: newState)
+            con.consume(old: previousState, new: new)
         }
-        self.previousState = newState
+        self.previousState = new
     }
     
     public override func consume(old: S?, new: S?) {

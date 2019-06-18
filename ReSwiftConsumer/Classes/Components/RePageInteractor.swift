@@ -56,14 +56,14 @@ open class RePageInteractor<PS: StateType> : NSObject, PageStoreSubscriber {
     
     open func newPageState(state: PS) {
         for consumer in sharedConsumers {
-            consumer.consume(newState: state)
+            consumer.consume(new: state)
         }
     }
 
     public func addSharedConsumer(_ consumer: StateConsumer<PS>) {
         sharedConsumers.update(with: consumer)
         if consumer.consumeInstantly {
-            consumer.consume(newState: pageStore.state)
+            consumer.consume(new: pageStore.state)
         }
     }
 

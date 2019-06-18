@@ -11,11 +11,15 @@ import Foundation
 public protocol Consumer {
     associatedtype State
     func consume(old: State?, new: State?) -> Void
+    func consume(new: State?) -> Void
 }
 
 open class TypedConsumer<S>: Consumer, Hashable {
+
     public typealias State = S
+
     private lazy var objectIdentifier = ObjectIdentifier(self)
+
     #if swift(>=5.0)
     public func hash(into hasher: inout Hasher) {
         hasher.combine(objectIdentifier)
@@ -37,10 +41,15 @@ open class TypedConsumer<S>: Consumer, Hashable {
     #endif
 
     open func consume(old: S?, new: S?) {
+        fatalError("need implements")
+    }
+
+    open func consume(new: S?) {
+        fatalError("need implements")
     }
     
     public static func ==(left: TypedConsumer<S>, right: TypedConsumer<S>) -> Bool {
-        return left.objectIdentifier == right.objectIdentifier
+        return left.hashValue == right.hashValue
     }
 }
 
@@ -52,21 +61,30 @@ public class SelectiveConsumer<S, T: Equatable>: TypedConsumer<S> {
     let selector: (S?) -> T?
     let consumer: (S?, T?, T?) -> Void
 
+    public var value: T?
+
     init(_ selector: @escaping (S?) -> T?,
          _ consumer: @escaping (S?, T?, T?) -> Void) {
         self.selector = selector
         self.consumer = consumer
     }
 
-    override open func consume(old: S?, new: S?) {
-        let oldValue = selector(old)
+    open override func consume(old: S?, new: S?) {
+        value = selector(old)
+        consume(new: new)
+    }
+
+    open override func consume(new: S?) {
+        let oldValue = value
         let newValue = selector(new)
         if oldValue != newValue {
             DispatchQueue.main.async {
                 self.consumer(new, oldValue, newValue)
             }
         }
+        value = newValue
     }
+
 }
 
 /// Links a array property selector of State with a observer to notify changes.
@@ -77,14 +95,21 @@ public class SelectiveArrayConsumer<S, T: Equatable>: TypedConsumer<S> {
     let selector: (S?) -> [T]?
     let consumer: (S?, [T]?, [T]?) -> Void
 
+    public var value: [T]?
+
     init(_ selector: @escaping (S?) -> [T]?,
          _ consumer: @escaping (S?, [T]?, [T]?) -> Void) {
         self.selector = selector
         self.consumer = consumer
     }
 
-    override open func consume(old: S?, new: S?) {
-        let oldValue = selector(old)
+    open override func consume(old: S?, new: S?) {
+        value = selector(old)
+        consume(new: new)
+    }
+
+    open override func consume(new: S?) {
+        let oldValue = value
         let newValue = selector(new)
         if (oldValue == nil && newValue == nil) {
             return
@@ -101,6 +126,7 @@ public class SelectiveArrayConsumer<S, T: Equatable>: TypedConsumer<S> {
                 self.consumer(new, oldValue, newValue)
             }
         }
+        value = newValue
     }
 }
 
