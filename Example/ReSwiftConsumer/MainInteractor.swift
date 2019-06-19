@@ -52,7 +52,7 @@ class MainInteractor: RePageInteractor<MainState>, StoreSubscriber {
 
     // ReSwift StoreSubscriber implements
     func newState(state: AppState) {
-        appConsumer.consume(newState: state)
+        appConsumer.consume(new: state)
     }
 
     // MARK: consumer callbacks
