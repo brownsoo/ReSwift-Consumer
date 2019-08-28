@@ -191,9 +191,9 @@ class MainVc: UIViewController, PageStoreSubscriber, StoreSubscriber {
 
 이 라이브러리에는 ViewController 단에서 바로 사용할 수 있는 다음과 같은 콤포넌트를 포함하고 있습니다. 위 예제에서 작성되는 반복적인 작업을 쉽게 활용할 수 있는 형태로 만든 것입니다.
 
-* RePageInteractor : `PageStoreSubscriber` 를 바로 사용할 수 있도록 구현해놓은 것으로, `ReSwift`에서 제공하는 `StoreSubscriber`와 다른 Store와 Middleware를 갖고 있습니다.
+* RePageController : `PageStoreSubscriber` 를 바로 사용할 수 있도록 구현해놓은 것으로, `ReSwift`에서 제공하는 `StoreSubscriber`와 다른 Store와 Middleware를 갖고 있습니다.
 
-* StateViewController, StateNavigationController : `RePageInteractor` 와 연결되어 동작할 수 있는 기본 뷰 컨트롤러입니다. 독립된 Store와 RePageInteractor 에서 취하는 State를 구독하거나 해제하는 동작을 합니다.
+* StateViewController, StateNavigationController : `RePageController` 와 연결되어 동작할 수 있는 기본 뷰 컨트롤러입니다. 독립된 Store와 RePageController 에서 취하는 State를 구독하거나 해제하는 동작을 합니다.
 
 * ConsumberBag: StateConsumer에 Consumer 들을 선택적으로 모으고 한꺼번에 제거하고자 할 때 사용합니다.
 
@@ -205,6 +205,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 샘플 앱의 코드를 확인해보세요.
 
 ## Installation
+
+### CocoaPods
 
 ReSwiftConsumer is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
