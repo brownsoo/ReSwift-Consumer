@@ -11,11 +11,14 @@ import UIKit
 import ReSwift
 
 open class StateNavigationController<ReState>: UINavigationController where ReState: StateType {
+
+    @available(*, unavailable, renamed: "pageController")
+    open var pageInteractor: RePageController<ReState>?
     
-    open var pageInteractor: RePageInteractor<ReState>?
+    open var pageController: RePageController<ReState>?
     
     open var pageStore: Store<ReState>? {
-        return pageInteractor?.pageStore ?? nil
+        return pageController?.pageStore ?? nil
     }
     public let pageConsumer: StateConsumer<ReState> = StateConsumer<ReState>()
 
@@ -23,25 +26,25 @@ open class StateNavigationController<ReState>: UINavigationController where ReSt
         super.viewDidLoad()
         // makes subscription on PageStore
         DispatchQueue.main.async {
-            self.pageInteractor?.bindState()
+            self.pageController?.bindState()
         }
     }
 
     deinit {
         // unsubscription on PageStore
-        if let interactor = pageInteractor, interactor.sharedConsumers.isEmpty {
+        if let interactor = pageController, interactor.sharedConsumers.isEmpty {
             interactor.unbindState()
         }
-        self.pageInteractor = nil
+        self.pageController = nil
     }
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        pageInteractor?.addSharedConsumer(pageConsumer)
+        pageController?.addSharedConsumer(pageConsumer)
     }
 
     open override func viewWillDisappear(_ animated: Bool) {
-        pageInteractor?.removeSharedConsumer(pageConsumer)
+        pageController?.removeSharedConsumer(pageConsumer)
         super.viewWillDisappear(animated)
     }
 }

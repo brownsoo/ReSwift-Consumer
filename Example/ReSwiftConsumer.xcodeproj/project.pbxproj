@@ -13,7 +13,7 @@
 		171B6B451FF068D300BFF7A5 /* CreateStateShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B441FF068D300BFF7A5 /* CreateStateShared.swift */; };
 		171B6B471FF06D4700BFF7A5 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B461FF06D4700BFF7A5 /* AppState.swift */; };
 		171B6B491FF06DE400BFF7A5 /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B481FF06DE400BFF7A5 /* MainState.swift */; };
-		171B6B4B1FF0704700BFF7A5 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B4A1FF0704700BFF7A5 /* MainInteractor.swift */; };
+		171B6B4B1FF0704700BFF7A5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B4A1FF0704700BFF7A5 /* MainController.swift */; };
 		171B6B4E1FF07D9100BFF7A5 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* MainViewController.swift */; };
@@ -31,7 +31,7 @@
 		171B6B441FF068D300BFF7A5 /* CreateStateShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStateShared.swift; sourceTree = "<group>"; };
 		171B6B461FF06D4700BFF7A5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		171B6B481FF06DE400BFF7A5 /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
-		171B6B4A1FF0704700BFF7A5 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		171B6B4A1FF0704700BFF7A5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 		177A122521AD145C007ED385 /* Pods_ReSwiftConsumer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ReSwiftConsumer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		177A122921AD1604007ED385 /* ReSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,7 +102,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				171B6B461FF06D4700BFF7A5 /* AppState.swift */,
 				171B6B441FF068D300BFF7A5 /* CreateStateShared.swift */,
-				171B6B4A1FF0704700BFF7A5 /* MainInteractor.swift */,
+				171B6B4A1FF0704700BFF7A5 /* MainController.swift */,
 				171B6B481FF06DE400BFF7A5 /* MainState.swift */,
 				607FACD71AFB9204008FA782 /* MainViewController.swift */,
 				171B6B4D1FF07D9100BFF7A5 /* SubViewController.swift */,
@@ -193,7 +193,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = HansooLabs;
 				TargetAttributes = {
@@ -288,7 +288,7 @@
 				607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				171B6B471FF06D4700BFF7A5 /* AppState.swift in Sources */,
-				171B6B4B1FF0704700BFF7A5 /* MainInteractor.swift in Sources */,
+				171B6B4B1FF0704700BFF7A5 /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -390,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -407,7 +407,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReSwiftConsumer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hansoolabs.ReSwiftConsumer-Example";
@@ -428,7 +428,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReSwiftConsumer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hansoolabs.ReSwiftConsumer-Example";

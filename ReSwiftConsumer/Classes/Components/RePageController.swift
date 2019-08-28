@@ -1,5 +1,5 @@
 //
-//  ReStateInteractor.swift
+//  RePageController.swift
 //  ReSwiftConsumer
 //
 //  Created by brownsoo han on 2017. 10. 18..
@@ -9,7 +9,11 @@
 import Foundation
 import ReSwift
 
-open class RePageInteractor<PS: StateType> : NSObject, PageStoreSubscriber {
+/// The RePageController class defines the relations between RePageStore and ReSwift's middleware.
+/// And it provides a StateConsumer of StateType.
+@available(*, unavailable, renamed: "RePageController")
+open class RePageInteractor<PS: StateType> : NSObject {}
+open class RePageController<PS: StateType> : NSObject, PageStoreSubscriber {
     
     public typealias PageStoreSubscriberStateType = PS
     

@@ -15,8 +15,8 @@ class MainViewController: StateViewController<MainState> {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var btn: UIButton!
 
-    private var interactor: MainInteractor? {
-        return pageInteractor as? MainInteractor
+    private var interactor: MainController? {
+        return pageController as? MainController
     }
     private var activeController: UIViewController? {
         didSet {
@@ -32,7 +32,7 @@ class MainViewController: StateViewController<MainState> {
     
     override func viewDidLoad() {
         super.viewDidLoad() // At this,asynchronous subscription made in StateViewController
-        pageInteractor = MainInteractor()
+        pageController = MainController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,8 +55,8 @@ class MainViewController: StateViewController<MainState> {
             activeController = nil
         } else {
             let vc: SubViewController = SubViewController.newInstance()
-            print("assign pageInteractor \(String(describing: pageInteractor.debugDescription))")
-            vc.pageInteractor = self.pageInteractor
+            print("assign pageInteractor \(String(describing: pageController.debugDescription))")
+            vc.pageController = self.pageController
             activeController = vc
         }
     }

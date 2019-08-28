@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 import ReSwiftConsumer
 
-class MainInteractor: RePageInteractor<MainState>, StoreSubscriber {
+class MainController: RePageController<MainState>, StoreSubscriber {
     
     typealias StoreSubscriberStateType = AppState
     
