@@ -218,7 +218,9 @@ pod 'ReSwiftConsumer'
 
 ## Author
 
-brownsoo, [@hansoo.labs](https://twitter.com/hansoolabs), [hansoo.labs](https://blog.hansoolabs.com)
+brownsoo
+
+medium.com/@brownsoo
 
 ## License
 
